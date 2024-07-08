@@ -1,11 +1,9 @@
-import React from "react";
-
 export default function Cards({ item }: any) {
   return (
-    <div>
-      <div className="card bg-base-100 w-96 shadow-xl">
+    <div className="mt-4 my-3 p-3 ">
+      <div className="card bg-base-100 w-92 shadow-xl transform hover:scale-105 duration-200 transition-transform dark:border dark:bg-slate-900 dark:text-white">
         <figure>
-          <img src="Banner.jpg" alt="Banner.jpg" />
+          <img src="Banner.png" alt="Banner.jpg" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -14,8 +12,10 @@ export default function Cards({ item }: any) {
           </h2>
           <p>{item.title}</p>
           <div className="card-actions flex justify-between">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+            <div className="badge badge-outline">${item.price}</div>
+            <div className="cursor-pointer hover:bg-pink-500 rounded-full  border-[2px] hover:text-white px-2 py-1">
+              Buy now
+            </div>
           </div>
         </div>
       </div>
