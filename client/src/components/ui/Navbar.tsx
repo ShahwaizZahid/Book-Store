@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Login from "./Login";
 const NavItems = (
   <>
     <li>
@@ -140,18 +139,12 @@ export default function Navbar() {
             </svg>
           </label>
           <div>
-            <a
+            <Link
+              to="/login"
               className="bg-black text-white px-2 py-2 rounded-md btn  hover:bg-slate-800 duration-300 cursor-pointer"
-              onClick={() => {
-                const modal = document.getElementById(
-                  "my_modal_3"
-                ) as HTMLDialogElement | null;
-                modal?.showModal();
-              }}
             >
               Login
-            </a>
-            <Login />
+            </Link>
           </div>
         </div>
       </div>
