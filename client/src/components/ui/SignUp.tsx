@@ -2,18 +2,17 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-
-import Otp from "../Pages/Otp";
-
+import { useState } from "react";
+import OtpInput from "../Pages/Otp";
 import axios, { AxiosError } from "axios";
-type SignupFormData = {
-  name: string;
-  email: string;
-  password: string;
-};
+import { SignupFormData } from "../../hooks/DataTypes";
+
 export default function SignUp() {
   const signupMutation = useSignup();
-
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
   const {
     register,
     handleSubmit,
@@ -29,7 +28,7 @@ export default function SignUp() {
     <>
       <div className="flex h-screen items-center justify-center">
         <div className="w-[600px] shadow-lg border-[2px] p-5 rounded-lg">
-          <div className="model-box dark:bg-slate-900 dark:text-white">
+          <div className="model-box dark:bg-slate-900 dark:text-white dark:border-white">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="flex justify-between">
                 <h3 className="font-bold text-lg">Signup</h3>
@@ -47,8 +46,10 @@ export default function SignUp() {
                   {...register("name", { required: true })}
                   id="name"
                   placeholder="Enter your name"
-                  className="w-80 px-3 border py-1 rounded-md outline-none"
+                  className="w-80 dark:bg-slate-900 dark:text-white px-3 border py-1 rounded-md outline-none"
                 />
+                <br />
+
                 {errors.name && (
                   <span className="text-red-500">Name is required</span>
                 )}
@@ -70,8 +71,9 @@ export default function SignUp() {
                   })}
                   id="email"
                   placeholder="Enter your email"
-                  className="w-80 px-3 border py-1 rounded-md outline-none"
+                  className="w-80 px-3 border dark:bg-slate-900 dark:text-white py-1 rounded-md outline-none"
                 />
+                <br />
                 {errors.email && (
                   <span className="text-red-500">
                     {typeof errors.email.message === "string"
@@ -85,25 +87,35 @@ export default function SignUp() {
               <div className="mt-4 space-y-2">
                 <label htmlFor="password">Password:</label>
                 <br />
-                <input
-                  type="password"
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 8,
-                      message: "Password must be at least 8 characters long",
-                    },
-                    pattern: {
-                      value:
-                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-                      message:
-                        "Password must contain uppercase, lowercase, number, and special character",
-                    },
-                  })}
-                  id="password"
-                  placeholder="Enter your password"
-                  className="w-80 px-3 border py-1 rounded-md outline-none"
-                />
+                <div className="w-80 flex bg-white border rounded-md  overflow-hidden ">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters long",
+                      },
+                      pattern: {
+                        value:
+                          /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+                        message:
+                          "Password must contain uppercase, lowercase, number, and special character",
+                      },
+                    })}
+                    id="password"
+                    placeholder="Enter your password"
+                    className="w-[80%] dark:bg-slate-900 dark:text-white px-3 py-1 outline-none "
+                  />
+                  <br />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className=" dark:bg-slate-900 dark:text-white w-[20%]"
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
                 <br />
                 {errors.password && (
                   <span className="text-red-500">
@@ -117,10 +129,17 @@ export default function SignUp() {
               {/* Button */}
               <div className="flex justify-around mt-4">
                 <button
+                  disabled={
+                    signupMutation.isPending || signupMutation.isSuccess
+                  }
                   type="submit"
                   className="bg-pink-500 text-white px-3 py-1 hover:bg-pink-700 rounded-md"
                 >
-                  Signup
+                  {!signupMutation.isPending ? (
+                    "Signup"
+                  ) : (
+                    <span className="loading loading-infinity loading-md"></span>
+                  )}
                 </button>
 
                 {/* If have account */}
@@ -133,6 +152,18 @@ export default function SignUp() {
                   </span>
                 </div>
               </div>
+              {(signupMutation.isSuccess || signupMutation.isError) && (
+                <div
+                  className={`  ${
+                    signupMutation?.data?.message
+                      ? "text-blue-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  {signupMutation?.data?.message}
+                  {(signupMutation?.error?.response?.data as any)?.message}
+                </div>
+              )}
             </form>
           </div>
         </div>
@@ -160,7 +191,7 @@ function useSignup() {
     },
     onSuccess: (_, { email }) => {
       console.log("success");
-      navigate("/otp", {
+      navigate("/op", {
         replace: true,
         state: {
           email,

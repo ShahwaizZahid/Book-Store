@@ -2,8 +2,10 @@ import Home from "./components/Pages/Home";
 import Courses from "./components/Pages/Courses";
 import SignUp from "./components/ui/SignUp";
 import Login from "./components/ui/Login";
-import Otp from "./components/Pages/Otp";
+import OtpInput from "./components/Pages/Otp";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 const browserRouter = createBrowserRouter([
   {
     children: [
@@ -24,12 +26,13 @@ const browserRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/otp",
-        element: <Otp />,
+        path: "/op",
+        element: <OtpInput />,
       },
     ],
   },
 ]);
+
 export default function App() {
   return (
     <>

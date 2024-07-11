@@ -2,9 +2,10 @@ import Cards from "./Cards";
 import { Link } from "react-router-dom";
 import { BookInfo } from "../../hooks/useBooks";
 import { useBook } from "../../hooks/useBooks";
+import CardSkelton from "./CardSkelton";
+
 export default function Course() {
   const { isLoading, error, data } = useBook();
-  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   return (
     <>
@@ -27,11 +28,23 @@ export default function Course() {
             <Link to="/"> Back</Link>
           </button>
         </div>
-        <div className=" mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center S">
-          {data.map((item: BookInfo) => (
-            <Cards key={item.id} item={item} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center S">
+            <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
+          </div>
+        ) : (
+          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center S">
+            {data.map((item: BookInfo) => (
+              <Cards key={item.id} item={item} />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
