@@ -1,38 +1,41 @@
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios, { AxiosError } from "axios";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import Course from "./Course";
+type LoginFormData = {
+  email: string;
+  password: string;
+};
 export default function Login() {
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const loginMutation = useLogin();
+
+  useForm<LoginFormData>();
+
+  const onSubmit = async (data: any) => {
+    console.log(data);
+    await loginMutation.mutateAsync(data);
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: any) => {
-    console.log(data);
-    // Handle form submission here
-  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-[600px] ">
         <div className="modal-box dark:bg-slate-900 dark:text-white">
           <form method="dialog" onSubmit={handleSubmit(onSubmit)}>
             {/* Close button */}
-            <div>
-              {isHomePage ? (
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                  ✕
-                </button>
-              ) : (
-                <Link
-                  to="/"
-                  className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                >
-                  ✕
-                </Link>
-              )}
-            </div>
+
+            <Link
+              to="/"
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </Link>
 
             <h3 className="font-bold text-lg">Login!</h3>
 
@@ -114,4 +117,29 @@ export default function Login() {
       </div>
     </div>
   );
+}
+
+function useLogin() {
+  const navigate = useNavigate();
+
+  return useMutation<any, AxiosError, LoginFormData>({
+    mutationKey: ["login"],
+    mutationFn: async ({ email, password }) => {
+      const res = await axios.post(
+        "http://localhost:4000/auth/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      return res.data;
+    },
+    onSuccess: ({ user }) => {
+      // setUser(user);
+      console.log(user);
+      navigate("/courses", { replace: true });
+      console.log("login successfully");
+    },
+  });
 }

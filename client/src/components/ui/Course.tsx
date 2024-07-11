@@ -1,7 +1,11 @@
-import { list } from "./Freebook";
 import Cards from "./Cards";
 import { Link } from "react-router-dom";
+import { BookInfo } from "../../hooks/useBooks";
+import { useBook } from "../../hooks/useBooks";
 export default function Course() {
+  const { isLoading, error, data } = useBook();
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
   return (
     <>
       <div className="w-full   md:px-20 px-4 ">
@@ -23,9 +27,9 @@ export default function Course() {
             <Link to="/"> Back</Link>
           </button>
         </div>
-        <div className=" mt-12 grid grid-cols-1 md:grid-cols-4 ">
-          {list.map((item) => (
-            <Cards item={item} key={item.id} />
+        <div className=" mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center S">
+          {data.map((item: BookInfo) => (
+            <Cards key={item.id} item={item} />
           ))}
         </div>
       </div>

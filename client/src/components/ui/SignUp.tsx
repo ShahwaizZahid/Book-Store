@@ -1,15 +1,28 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
+import Otp from "../Pages/Otp";
+
+import axios, { AxiosError } from "axios";
+type SignupFormData = {
+  name: string;
+  email: string;
+  password: string;
+};
 export default function SignUp() {
+  const signupMutation = useSignup();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data); // Replace with your form submission logic
+  const onSubmit = async (data: any) => {
+    await signupMutation.mutateAsync(data);
+    console.log("measss", signupMutation?.data?.message);
   };
 
   return (
@@ -126,4 +139,33 @@ export default function SignUp() {
       </div>
     </>
   );
+}
+
+function useSignup() {
+  const navigate = useNavigate();
+
+  return useMutation<any, AxiosError, SignupFormData>({
+    mutationKey: ["signup"],
+    mutationFn: async ({ email, password, name }) => {
+      const res = await axios.post(
+        "http://localhost:4000/auth/signup",
+        {
+          email,
+          password,
+          name,
+        },
+        { withCredentials: true }
+      );
+      return res.data;
+    },
+    onSuccess: (_, { email }) => {
+      console.log("success");
+      navigate("/otp", {
+        replace: true,
+        state: {
+          email,
+        },
+      });
+    },
+  });
 }

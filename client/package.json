@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.51.1",
+    "axios": "^1.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
+    "react-hot-toast": "^2.4.1",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.24.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"
