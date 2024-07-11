@@ -150,3 +150,38 @@ export const handleUserVAlidation = async (req: Request, res: Response) => {
 
   res.status(200).json({ message: "Email verified successfully." });
 };
+
+export const handleReSendOtp = async (req: Request, res: Response) => {
+  console.log(req.body);
+  const { email = "", otp: validationCode = "" } = req.body;
+  const validationData = await ValidationCodeModel.findOne({ email: email });
+  if (validationData) {
+    console.log("hava ");
+    await ValidationCodeModel.deleteOne({ email });
+  }
+  console.log("del");
+  const validationCodeDoc = new ValidationCodeModel({
+    email,
+    code: Math.floor(100000 + Math.random() * 900000),
+    expiration: new Date(Date.now() + 3600000),
+  });
+  try {
+    await validationCodeDoc.save();
+  } catch {
+    return res.status(500).json({ message: "Server error" });
+  }
+
+  try {
+    await sendVerificationEmail({
+      email,
+      validationCode: validationCodeDoc.code,
+    });
+    res.status(200).json({ message: "Email sent successfully." });
+    console.log("successfully sent email");
+  } catch (err) {
+    console.error("Error while logging in: ", err);
+    return res.status(500).json({
+      message: "Error while sending email. Make sure it is a valid email.",
+    });
+  }
+};
