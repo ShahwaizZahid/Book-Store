@@ -141,7 +141,8 @@ export const handleUserVAlidation = async (req: Request, res: Response) => {
       user.verified = true;
       await user.save();
     }
-  } catch {
+  } catch (e) {
+    console.log(e);
     res.status(400).json({ message: "User does not exist." });
   }
 
