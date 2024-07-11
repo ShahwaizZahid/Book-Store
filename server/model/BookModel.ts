@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const BookSchema = new mongoose.Schema({
   volumeInfo: {
@@ -70,6 +70,4 @@ const BookSchema = new mongoose.Schema({
   },
 });
 
-const Book = mongoose.model("Book", BookSchema);
-
-module.exports = Book;
+export const Book = mongoose.model("Book", BookSchema);
