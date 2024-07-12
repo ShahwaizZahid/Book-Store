@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { OTPFormData } from "../../hooks/DataTypes";
+import toast from "react-hot-toast";
+
 const OtpInput = () => {
   const [enable, setEnable] = useState(true);
 
@@ -174,12 +176,22 @@ function useOTPVerifyMutation() {
         .data;
     },
     onSuccess: (_, { email }) => {
+      toast.success("OTP verified successfully!");
       navigate("/login", {
         replace: true,
         state: {
           email,
         },
       });
+    },
+    onError: (error) => {
+      console.error("OTP verification failed: ", error);
+
+      const errorMessage =
+        (error.response?.data as { message?: string })?.message ||
+        "An error occurred during OTP verification";
+
+      toast.error(errorMessage);
     },
   });
 }
@@ -190,6 +202,18 @@ function useOAgainOtpMutation() {
     mutationFn: async (data) => {
       return (await axios.post(`http://localhost:4000/auth/otp-again`, data))
         .data;
+    },
+    onSuccess: () => {
+      toast.success("OTP sent again successfully!");
+    },
+    onError: (error) => {
+      console.error("Sending OTP again failed: ", error);
+
+      const errorMessage =
+        (error.response?.data as { message?: string })?.message ||
+        "An error occurred while sending OTP again";
+
+      toast.error(errorMessage);
     },
   });
 }

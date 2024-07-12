@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import OtpInput from "../Pages/Otp";
 import axios, { AxiosError } from "axios";
 import { SignupFormData } from "../../hooks/DataTypes";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
   const signupMutation = useSignup();
@@ -191,13 +191,23 @@ function useSignup() {
       return res.data;
     },
     onSuccess: (_, { email }) => {
-      console.log("success");
-      navigate("/op", {
+      toast.success("Signup successful!");
+      navigate("/otp", {
         replace: true,
         state: {
           email,
         },
       });
+    },
+    onError: (error) => {
+      console.error("Signup failed: ", error);
+
+      // Type assertion for error response
+      const errorMessage =
+        (error.response?.data as { message?: string })?.message ||
+        "An error occurred during signup";
+
+      toast.error(errorMessage);
     },
   });
 }

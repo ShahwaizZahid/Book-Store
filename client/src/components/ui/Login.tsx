@@ -14,33 +14,34 @@ export default function Login() {
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
-  useForm<LoginFormData>();
 
-  const onSubmit = async (data: any) => {
-    await loginMutation.mutateAsync(data);
-  };
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<LoginFormData>();
+
+  const onSubmit = async (data: LoginFormData) => {
+    try {
+      await loginMutation.mutateAsync(data);
+    } catch (error) {
+      console.error("Login error: ", error);
+    }
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="w-[600px] ">
+      <div className="w-[600px]">
         <div className="modal-box dark:bg-slate-900 dark:text-white dark:border">
           <form method="dialog" onSubmit={handleSubmit(onSubmit)}>
-            {/* Close button */}
-
             <Link
               to="/"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
             >
               ✕
             </Link>
-
             <h3 className="font-bold text-lg">Login!</h3>
 
-            {/* Email */}
             <div className="mt-4 space-y-2">
               <label htmlFor="email">Email:</label>
               <br />
@@ -48,7 +49,7 @@ export default function Login() {
                 type="text"
                 id="email"
                 placeholder="Enter your email"
-                className="w-80 px-3 dark:bg-slate-900 dark:text-white  border py-1 rounded-md outline-none"
+                className="w-80 px-3 dark:bg-slate-900 dark:text-white border py-1 rounded-md outline-none"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -58,19 +59,14 @@ export default function Login() {
                 })}
               />
               {errors.email && (
-                <span className="text-red-500">
-                  {typeof errors.email.message === "string"
-                    ? errors.email.message
-                    : "Invalid email"}
-                </span>
+                <span className="text-red-500">{errors.email.message}</span>
               )}
             </div>
 
-            {/* Password */}
             <div className="mt-4 space-y-2">
               <label htmlFor="password">Password:</label>
               <br />
-              <div className="w-80 flex bg-white border rounded-md  overflow-hidden ">
+              <div className="w-80 flex bg-white border rounded-md overflow-hidden">
                 <input
                   type={showPassword ? "text" : "password"}
                   {...register("password", {
@@ -88,27 +84,21 @@ export default function Login() {
                   })}
                   id="password"
                   placeholder="Enter your password"
-                  className="w-[80%] dark:bg-slate-900 dark:text-white px-3 py-1 outline-none "
+                  className="w-[80%] dark:bg-slate-900 dark:text-white px-3 py-1 outline-none"
                 />
-                <br />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className=" dark:bg-slate-900 dark:text-white w-[20%]"
+                  className="dark:bg-slate-900 dark:text-white w-[20%]"
                 >
                   {showPassword ? "Hide" : "Show"}
                 </button>
               </div>
               {errors.password && (
-                <span className="text-red-500">
-                  {typeof errors.password.message === "string"
-                    ? errors.password.message
-                    : "Invalid password"}
-                </span>
+                <span className="text-red-500">{errors.password.message}</span>
               )}
             </div>
 
-            {/* Button */}
             <div className="flex justify-around mt-4">
               <button
                 type="submit"
@@ -120,7 +110,6 @@ export default function Login() {
                   <span className="loading loading-infinity loading-md"></span>
                 )}
               </button>
-              {/* If not have a account */}
               <p>
                 Not registered?{" "}
                 <span className="cursor-pointer underline underline-offset-4 text-blue-500">
@@ -156,19 +145,25 @@ function useLogin() {
     mutationFn: async ({ email, password }) => {
       const res = await axios.post(
         "http://localhost:4000/auth/login",
-        {
-          email,
-          password,
-        },
+        { email, password },
         { withCredentials: true }
       );
       return res.data;
     },
     onSuccess: ({ user }) => {
-      // setUser(user);
-      toast.success("Successfully created!");
+      toast.success("Login successful!");
       navigate("/courses", { replace: true });
-      console.log("login successfully");
+      console.log("Login successfully");
+    },
+    onError: (error) => {
+      console.error("Login failed: ", error);
+
+      // Type assertion for error response
+      const errorMessage =
+        (error.response?.data as { message?: string })?.message ||
+        "An error occurred during login";
+
+      toast.error(errorMessage);
     },
   });
 }
