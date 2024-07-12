@@ -118,7 +118,6 @@ export const handleUserLogin = async (req: Request, res: Response) => {
 
 export const handleUserVAlidation = async (req: Request, res: Response) => {
   const { email = "", otp: validationCode = "" } = req.body;
-  console.log(req.body);
   const validationData = await ValidationCodeModel.findOne({
     email,
     code: validationCode,
@@ -148,7 +147,6 @@ export const handleUserVAlidation = async (req: Request, res: Response) => {
 };
 
 export const handleReSendOtp = async (req: Request, res: Response) => {
-  console.log(req.body);
   const { email = "", otp: validationCode = "" } = req.body;
   const validationData = await ValidationCodeModel.findOne({ email: email });
   if (validationData) {
@@ -187,26 +185,44 @@ export const handleMe = async (req: Request, res: Response) => {
     const user = req.cookies.userBook;
 
     if (!user) {
-      // Incorrectly attempting to send multiple responses
-      res.status(401).json({ user: null });
-      return; // Ensuring the function exits
-    }
-
-    // Simulate async issue or logic error
-    const foundSession = await session.findOne({ token: user });
-    console.log("user", foundSession);
-
-    if (!foundSession) {
-      // Incorrectly attempting to send multiple responses
       res.status(401).json({ user: null });
       return;
     }
-    console.log(foundSession);
+
+    const foundSession = await session.findOne({ token: user });
+
+    if (!foundSession) {
+      res.status(401).json({ user: null });
+      return;
+    }
     res.status(200).json({ user: foundSession });
+    console.log("successfully direct login");
   } catch (e) {
     console.error("Error in handleMe:", e);
     if (!res.headersSent) {
       res.status(500).json({ error: "Internal Server Error" });
     }
+  }
+};
+
+export const handleLogout = async (req: Request, res: Response) => {
+  try {
+    res.clearCookie("userBook", {
+      secure: true,
+      sameSite: "none",
+    });
+
+    const result = await session.deleteOne({ token: req.body.userId });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "Session not found" });
+    }
+
+    console.log("Successfully logged out");
+
+    res.status(200).json({ message: "Successfully logged out" });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };

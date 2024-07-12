@@ -5,6 +5,7 @@ import {
   handleUserLogin,
   handleReSendOtp,
   handleMe,
+  handleLogout,
 } from "../controller/user";
 import { authenticateJWT } from "../middleware/user";
 export const UserAuth = express.Router();
@@ -15,3 +16,4 @@ UserAuth.post("/verify-email", handleUserVAlidation);
 UserAuth.post("/login", handleUserLogin);
 UserAuth.post("/Otp-again", handleReSendOtp);
 UserAuth.get("/me", handleMe);
+UserAuth.post("/logout", handleLogout);
