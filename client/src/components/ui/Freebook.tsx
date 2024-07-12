@@ -6,11 +6,16 @@ import { useBook } from "../../hooks/useBooks";
 import { BookInfo } from "../../hooks/useBooks";
 import CardSkelton from "./CardSkelton";
 import { settings } from "../../hooks/DataTypes";
+import { Toaster } from "react-hot-toast";
 
 export default function Freebook() {
-  const { isLoading, data, error } = useBook();
+  const { isLoading, data = [], error } = useBook();
 
   if (error) return <div>Error: {error.message}</div>;
+
+  const filteredData = Array.isArray(data)
+    ? data.filter((item: BookInfo) => item.volumeInfo.category === "free")
+    : [];
 
   return (
     <div className="w-full md:px-20">
@@ -23,8 +28,8 @@ export default function Freebook() {
           stories, knowledge, and inspiration without spending a dime.
         </p>
       </div>
-      <div className="slider-container">
-        {isLoading ? (
+      <div className="slider-container my-8">
+        {isLoading || !Array.isArray(data) || data.length === 0 ? (
           <Slider {...settings}>
             <CardSkelton />
             <CardSkelton />
@@ -36,16 +41,13 @@ export default function Freebook() {
           </Slider>
         ) : (
           <Slider {...settings}>
-            {data
-              .filter((item: BookInfo) => {
-                return item.volumeInfo.category === "free";
-              })
-              .map((item: BookInfo) => (
-                <Cards item={item} key={item.id} />
-              ))}
+            {filteredData.map((item: BookInfo) => (
+              <Cards item={item} key={item.id} />
+            ))}
           </Slider>
         )}
       </div>
+      <Toaster />
     </div>
   );
 }

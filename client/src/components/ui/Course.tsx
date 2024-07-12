@@ -6,14 +6,16 @@ import CardSkelton from "./CardSkelton";
 
 export default function Course() {
   const { isLoading, error, data } = useBook();
+
   if (error) return <div>Error: {error.message}</div>;
+
   return (
     <>
-      <div className="w-full   md:px-20 px-4 ">
+      <div className="w-full md:px-20 px-4">
         <div className="pt-28 items-center justify-center text-center">
-          <h1 className="text-2xl  md:text-4xl ">
+          <h1 className="text-2xl md:text-4xl">
             We're delighted to have you{" "}
-            <span className="text-pink-500">here! :)</span>{" "}
+            <span className="text-pink-500">here! :)</span>
           </h1>
           <p className="mt-12">
             Our courses are designed to empower learners with practical skills
@@ -28,8 +30,8 @@ export default function Course() {
             <Link to="/"> Back</Link>
           </button>
         </div>
-        {isLoading ? (
-          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center S">
+        {isLoading || !Array.isArray(data) || data.length === 0 ? (
+          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
             <CardSkelton />
             <CardSkelton />
             <CardSkelton />
@@ -39,7 +41,7 @@ export default function Course() {
             <CardSkelton />
           </div>
         ) : (
-          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center S">
+          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
             {data.map((item: BookInfo) => (
               <Cards key={item.id} item={item} />
             ))}

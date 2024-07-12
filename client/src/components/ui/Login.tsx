@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LoginFormData } from "../../hooks/DataTypes";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const loginMutation = useLogin();
@@ -23,7 +24,6 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-[600px] ">
@@ -136,6 +136,7 @@ export default function Login() {
                     : "text-red-600"
                 }`}
               >
+                {loginMutation.error?.message}
                 {loginMutation?.data?.message}
                 {(loginMutation?.error?.response?.data as any)?.message}
               </div>
@@ -165,7 +166,7 @@ function useLogin() {
     },
     onSuccess: ({ user }) => {
       // setUser(user);
-      console.log(user);
+      toast.success("Successfully created!");
       navigate("/courses", { replace: true });
       console.log("login successfully");
     },

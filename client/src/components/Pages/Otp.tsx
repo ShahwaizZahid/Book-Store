@@ -3,11 +3,13 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { OTPFormData } from "../../hooks/DataTypes";
-
 const OtpInput = () => {
+  const [enable, setEnable] = useState(true);
+
   const { state } = useLocation();
-  const navigate = useNavigate();
   const OTPVerifyMutation = useOTPVerifyMutation();
+  const OtpAgainMutation = useOAgainOtpMutation();
+
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -15,10 +17,9 @@ const OtpInput = () => {
     if (isNaN(element.value)) return;
     setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
 
-    // Move to next input
     if (element.value !== "" && index < 5) {
       const nextInput = inputRefs.current[index + 1];
-      nextInput?.focus(); // Use optional chaining to focus if nextInput exists
+      nextInput?.focus();
     }
   };
 
@@ -30,6 +31,18 @@ const OtpInput = () => {
   };
 
   useEffect(() => {
+    if (OtpAgainMutation.isSuccess) {
+      setEnable(true);
+    }
+  }, [OtpAgainMutation.isSuccess]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEnable(false);
+    }, 6000);
+  }, [enable]);
+
+  useEffect(() => {
     if (otp.join("").length === 6) {
       const joinOtp = otp.join("");
       sendOtpToServer({ otp: joinOtp });
@@ -37,17 +50,22 @@ const OtpInput = () => {
       const nextInput = inputRefs.current[0];
       nextInput?.focus();
     }
-    // Reset otp state after sending to server
   }, [otp]);
 
   const sendOtpToServer = async (data: any) => {
     console.log(state.email);
     console.log(data);
 
-    // Create a new data object that includes the email
     const newData = { ...data, email: state.email };
 
     await OTPVerifyMutation.mutateAsync(newData);
+  };
+
+  const sendEmailToserver = async () => {
+    console.log(state.email);
+    const demo = { otp: "123345" };
+    const newData = { ...demo, email: state.email };
+    await OtpAgainMutation.mutateAsync(newData);
   };
   return (
     <>
@@ -67,13 +85,23 @@ const OtpInput = () => {
                   key={index}
                   type="text"
                   maxLength={1}
-                  className="w-12 h-12 text-center  dark:text-black dark:border-2  border border-gray-400 rounded-md mt-8 my-4"
+                  className="w-12 h-12 text-center  dark:text-black dark:border-2  border border-gray-400 rounded-md mt-8 my-2"
                   value={data}
                   onChange={(e) => handleChange(e.target, index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
                   ref={(el) => (inputRefs.current[index] = el)}
                 />
               ))}
+              <br />
+              <button
+                disabled={enable}
+                onClick={sendEmailToserver}
+                className={`${
+                  enable ? "text-gray-300" : "text-blue-500"
+                } hover:text-pink-500 hover:scale-105 cursor-pointer text-sm`}
+              >
+                again send code
+              </button>
               {(OTPVerifyMutation.isSuccess || OTPVerifyMutation.isError) && (
                 <div
                   className={`  ${
@@ -89,14 +117,41 @@ const OtpInput = () => {
             </div>
           </div>
         </div>
+        {(OTPVerifyMutation.isSuccess || OTPVerifyMutation.isError) && (
+          <div
+            className={`  ${
+              OTPVerifyMutation?.data?.message
+                ? "text-blue-600"
+                : "text-red-600"
+            }`}
+          >
+            {OTPVerifyMutation.error?.message}
+            {OTPVerifyMutation?.data?.message}
+            {(OTPVerifyMutation?.error?.response?.data as any)?.message}
+          </div>
+        )}
+        {(OtpAgainMutation.isSuccess || OtpAgainMutation.isError) && (
+          <div
+            className={`  ${
+              OtpAgainMutation?.data?.message ? "text-blue-600" : "text-red-600"
+            }`}
+          >
+            {OtpAgainMutation.error?.message}
+            {OtpAgainMutation?.data?.message}
+            {(OtpAgainMutation?.error?.response?.data as any)?.message}
+          </div>
+        )}
         <div className="items-center text-center flex justify-center my-28">
           <p className="md:w-[60%] w-[80%] ">
             Upon initiating account verification, a 6-digit verification code is
             automatically generated and sent to the contact information
-            associated with your account (either via email). Please enter this
-            code in the provided field be80%low to complete the verification
-            process. This step ensures the security and integrity of your
-            account information.
+            associated with your{" "}
+            <span className="text-pink-500 font-bold">
+              Email: {state.email}
+            </span>{" "}
+            . Please enter this code in the provided field be80%low to complete
+            the verification process. This step ensures the security and
+            integrity of your account information.
           </p>
         </div>
       </div>
@@ -104,12 +159,15 @@ const OtpInput = () => {
   );
 };
 
+type Data = {
+  email: any;
+};
 export default OtpInput;
 
 function useOTPVerifyMutation() {
   const navigate = useNavigate();
 
-  return useMutation<any, AxiosError, OTPFormData>({
+  return useMutation<any, AxiosError, Data>({
     mutationKey: ["otp"],
     mutationFn: async (data) => {
       return (await axios.post(`http://localhost:4000/auth/verify-email`, data))
@@ -122,6 +180,16 @@ function useOTPVerifyMutation() {
           email,
         },
       });
+    },
+  });
+}
+
+function useOAgainOtpMutation() {
+  return useMutation<any, AxiosError, OTPFormData>({
+    mutationKey: ["otp"],
+    mutationFn: async (data) => {
+      return (await axios.post(`http://localhost:4000/auth/otp-again`, data))
+        .data;
     },
   });
 }

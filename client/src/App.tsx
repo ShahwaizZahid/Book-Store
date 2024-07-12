@@ -3,6 +3,7 @@ import Courses from "./components/Pages/Courses";
 import SignUp from "./components/ui/SignUp";
 import Login from "./components/ui/Login";
 import OtpInput from "./components/Pages/Otp";
+import toast, { Toaster } from "react-hot-toast";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -26,7 +27,7 @@ const browserRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/op",
+        path: "/otp",
         element: <OtpInput />,
       },
     ],
@@ -37,6 +38,7 @@ export default function App() {
   return (
     <>
       <RouterProvider router={browserRouter} />
+      <Toaster />
     </>
   );
 }
