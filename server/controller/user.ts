@@ -14,8 +14,6 @@ export async function handleUserSignup(req: Request, res: Response) {
 
     const exists = await User.findOne({ email });
     if (exists && !exists.verified) {
-      await User.deleteOne({ email });
-      await ValidationCodeModel.deleteOne({ email });
       return res.status(400).json({
         message: "Email already exists and not verified. Register again.",
       });
@@ -90,10 +88,8 @@ export const handleUserLogin = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(401).json({ message: "Invalid username " });
     }
-    console.log(user?.password);
     const compare = await comparePassword(password, user?.password);
 
-    console.log(compare);
     if (!compare) {
       return res.status(401).json({ message: "Invalid  password" });
     }
@@ -105,7 +101,7 @@ export const handleUserLogin = async (req: Request, res: Response) => {
     });
 
     res
-      .cookie("user", token, {
+      .cookie("userBook", token, {
         secure: true,
         sameSite: "none",
         expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
@@ -183,5 +179,34 @@ export const handleReSendOtp = async (req: Request, res: Response) => {
     return res.status(500).json({
       message: "Error while sending email. Make sure it is a valid email.",
     });
+  }
+};
+
+export const handleMe = async (req: Request, res: Response) => {
+  try {
+    const user = req.cookies.userBook;
+
+    if (!user) {
+      // Incorrectly attempting to send multiple responses
+      res.status(401).json({ user: null });
+      return; // Ensuring the function exits
+    }
+
+    // Simulate async issue or logic error
+    const foundSession = await session.findOne({ token: user });
+    console.log("user", foundSession);
+
+    if (!foundSession) {
+      // Incorrectly attempting to send multiple responses
+      res.status(401).json({ user: null });
+      return;
+    }
+    console.log(foundSession);
+    res.status(200).json({ user: foundSession });
+  } catch (e) {
+    console.error("Error in handleMe:", e);
+    if (!res.headersSent) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   }
 };
