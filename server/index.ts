@@ -22,7 +22,9 @@ connectToMongo(MONGO)
     console.log("Mongo DB successfully connected !");
   })
   .catch((e) => {
-    console.log("error in mongo connect ");
+    console.log("key", MONGO);
+
+    console.log("error in mongo connect ", e);
   });
 
 // Defing routes
