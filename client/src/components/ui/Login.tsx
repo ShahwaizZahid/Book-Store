@@ -10,7 +10,6 @@ import { useAuthContext } from "../../context/Auth";
 export default function Login() {
   const loginMutation = useLogin();
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser } = useAuthContext()!;
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -24,7 +23,6 @@ export default function Login() {
   const onSubmit = async (data: LoginFormData) => {
     try {
       await loginMutation.mutateAsync(data);
-      setUser(true);
     } catch (error) {
       console.error("Login error: ", error);
     }
@@ -139,6 +137,7 @@ export default function Login() {
 
 function useLogin() {
   const navigate = useNavigate();
+  const { setUser } = useAuthContext()!;
 
   return useMutation<any, AxiosError, LoginFormData>({
     mutationKey: ["login"],
@@ -148,6 +147,7 @@ function useLogin() {
         { email, password },
         { withCredentials: true }
       );
+      setUser({ user: true, userId: res.data.user._id });
       return res.data;
     },
     onSuccess: ({ user }) => {

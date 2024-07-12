@@ -2,9 +2,16 @@ import { createContext, useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
+// Define a type for the user state
+type User = {
+  user: boolean;
+  userId: string | null;
+};
+
+// Define the context type with proper type for `user` and `setUser`
 type AuthContextType = {
-  user: boolean | null;
-  setUser: (user: boolean | null) => void;
+  user: User;
+  setUser: (user: User) => void;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -24,24 +31,26 @@ export function AuthContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = useState<boolean | null>(false);
+  const [user, setUser] = useState<User>({ user: false, userId: null });
 
-  const { data, isLoading, error, isSuccess } = useQuery({
+  const { data, isLoading, error, isSuccess } = useQuery<User, AxiosError>({
     queryKey: ["user"],
     queryFn: async () => {
       const response = await axios.get("http://localhost:4000/auth/me", {
         withCredentials: true,
       });
-      if (response.data) setUser(true);
 
-      console.log(response.data);
+      console.log(response.data.user.token);
+      if (response.data)
+        setUser({ user: true, userId: response.data.user.token });
+
       return response.data;
+      return {
+        user: true,
+        userId: response.data.token,
+      };
     },
   });
-
-  // if (isSuccess) {
-  //   if (data) setUser(data);
-  // }
 
   if (isLoading) {
     return (
