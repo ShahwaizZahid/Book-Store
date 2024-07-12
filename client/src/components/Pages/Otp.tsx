@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 
 const OtpInput = () => {
   const [enable, setEnable] = useState(true);
-
   const { state } = useLocation();
   const OTPVerifyMutation = useOTPVerifyMutation();
   const OtpAgainMutation = useOAgainOtpMutation();
@@ -69,6 +68,7 @@ const OtpInput = () => {
     const newData = { ...demo, email: state.email };
     await OtpAgainMutation.mutateAsync(newData);
   };
+
   return (
     <>
       <div className="dark:bg-slate-900 dark:text-white min-h-screen ">
@@ -80,14 +80,14 @@ const OtpInput = () => {
             Please enter the one-time password sent to your email:{" "}
             <span className="text-pink-500">{state.email}</span>
           </p>
-          <div className=" flex justify-center items-center ">
+          <div className="flex justify-center items-center ">
             <div className="space-x-2">
               {otp.map((data, index) => (
                 <input
                   key={index}
                   type="text"
                   maxLength={1}
-                  className="w-12 h-12 text-center  dark:text-black dark:border-2  border border-gray-400 rounded-md mt-8 my-2"
+                  className="w-12 h-12 text-center dark:text-black dark:border-2 border border-gray-400 rounded-md mt-8 my-2"
                   value={data}
                   onChange={(e) => handleChange(e.target, index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
@@ -102,47 +102,12 @@ const OtpInput = () => {
                   enable ? "text-gray-300" : "text-blue-500"
                 } hover:text-pink-500 hover:scale-105 cursor-pointer text-sm`}
               >
-                again send code
+                Again send code
               </button>
-              {(OTPVerifyMutation.isSuccess || OTPVerifyMutation.isError) && (
-                <div
-                  className={`  ${
-                    OTPVerifyMutation?.data?.message
-                      ? "text-blue-600"
-                      : "text-red-600"
-                  }`}
-                >
-                  {OTPVerifyMutation?.data?.message}
-                  {(OTPVerifyMutation?.error?.response?.data as any)?.message}
-                </div>
-              )}
             </div>
           </div>
         </div>
-        {(OTPVerifyMutation.isSuccess || OTPVerifyMutation.isError) && (
-          <div
-            className={`  ${
-              OTPVerifyMutation?.data?.message
-                ? "text-blue-600"
-                : "text-red-600"
-            }`}
-          >
-            {OTPVerifyMutation.error?.message}
-            {OTPVerifyMutation?.data?.message}
-            {(OTPVerifyMutation?.error?.response?.data as any)?.message}
-          </div>
-        )}
-        {(OtpAgainMutation.isSuccess || OtpAgainMutation.isError) && (
-          <div
-            className={`  ${
-              OtpAgainMutation?.data?.message ? "text-blue-600" : "text-red-600"
-            }`}
-          >
-            {OtpAgainMutation.error?.message}
-            {OtpAgainMutation?.data?.message}
-            {(OtpAgainMutation?.error?.response?.data as any)?.message}
-          </div>
-        )}
+
         <div className="items-center text-center flex justify-center my-28">
           <p className="md:w-[60%] w-[80%] ">
             Upon initiating account verification, a 6-digit verification code is
@@ -151,9 +116,9 @@ const OtpInput = () => {
             <span className="text-pink-500 font-bold">
               Email: {state.email}
             </span>{" "}
-            . Please enter this code in the provided field be80%low to complete
-            the verification process. This step ensures the security and
-            integrity of your account information.
+            . Please enter this code in the provided field below to complete the
+            verification process. This step ensures the security and integrity
+            of your account information.
           </p>
         </div>
       </div>

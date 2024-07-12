@@ -1,84 +1,63 @@
-// import { createContext, useContext, useState } from "react";
-// import { useQuery } from "@tanstack/react-query";
-// import axios, { AxiosError } from "axios";
+import { createContext, useContext, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
 
-// import { useLocalStorage } from "@/hooks/useLocalStorage";
-// import { toast } from "sonner";
-// import { useThemeContext } from "./ThemeProvider";
+type AuthContextType = {
+  user: boolean | null;
+  setUser: (user: boolean | null) => void;
+};
 
-// export type User = {
-//   id: string;
-//   email: string;
-//   profilePicture: string;
-//   username: string;
-//   biography: string;
-//   hasNoCategories?: boolean;
-// };
+const AuthContext = createContext<AuthContextType | null>(null);
 
-// type AuthContextType = {
-//   user: User | null;
-//   setUser: (user: User | null) => void;
-//   setHasSession: (newValue: boolean) => void;
-// };
+export function useAuthContext() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error(
+      "useAuthContext must be used within an AuthContextProvider"
+    );
+  }
+  return context;
+}
 
-// const AuthContext = createContext<AuthContextType | null>(null);
+export function AuthContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [user, setUser] = useState<boolean | null>(false);
 
-// export function useAuthContext() {
-//   return useContext(AuthContext)!;
-// }
+  const { data, isLoading, error, isSuccess } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await axios.get("http://localhost:4000/auth/me", {
+        withCredentials: true,
+      });
+      if (response.data) setUser(true);
 
-// export function AuthContextProvider({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   const [user, setUser] = useState<User | null>(null);
-//   const [hasSession, setHasSession] = useLocalStorage("has-session", false);
-//   const { isDark } = useThemeContext();
+      console.log(response.data);
+      return response.data;
+    },
+  });
 
-//   const existingSessionQuery = useQuery<User, AxiosError>({
-//     queryKey: ["user"],
-//     queryFn: async () => {
-//       return (
-//         await axios.get(`/api/users/me`, {
-//           withCredentials: true,
-//         })
-//       ).data;
-//     },
-//     refetchOnWindowFocus: false,
-//     enabled: !user && hasSession,
-//   });
+  // if (isSuccess) {
+  //   if (data) setUser(data);
+  // }
 
-//   if (existingSessionQuery.isLoading) {
-//     return <span className="loading loading-infinity loading-md"></span>;
-//   }
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen justify-center items-center">
+        <span className="loading loading-bars loading-xs"></span>
+        <span className="loading loading-bars loading-sm"></span>
+        <span className="loading loading-bars loading-md"></span>
+        <span className="loading loading-bars loading-lg"></span>
+      </div>
+    );
+  }
 
-//   if (existingSessionQuery.isError) {
-//     window.location.pathname = "/login";
+  const value: AuthContextType = {
+    user,
+    setUser,
+  };
 
-//     if (
-//       existingSessionQuery.error.response &&
-//       existingSessionQuery.error.response.data &&
-//       typeof existingSessionQuery.error.response.data === "object" &&
-//       "message" in existingSessionQuery.error.response.data &&
-//       typeof existingSessionQuery.error.response.data.message === "string"
-//     ) {
-//       setHasSession(false);
-//       return toast.error(existingSessionQuery.error.response.data.message);
-//     } else {
-//       return toast.error(existingSessionQuery.error.cause?.message);
-//     }
-//   }
-
-//   if (existingSessionQuery.data && !user) {
-//     setUser(existingSessionQuery.data);
-//   }
-
-//   const value: AuthContextType = {
-//     user,
-//     setUser,
-//     setHasSession,
-//   };
-
-//   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-// }
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}

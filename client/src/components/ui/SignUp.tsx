@@ -154,13 +154,12 @@ export default function SignUp() {
               </div>
               {(signupMutation.isSuccess || signupMutation.isError) && (
                 <div
-                  className={`  ${
+                  className={` my-2  ${
                     signupMutation?.data?.message
                       ? "text-blue-600"
                       : "text-red-600"
                   }`}
                 >
-                  {signupMutation.error?.message}
                   {signupMutation?.data?.message}
                   {(signupMutation?.error?.response?.data as any)?.message}
                 </div>

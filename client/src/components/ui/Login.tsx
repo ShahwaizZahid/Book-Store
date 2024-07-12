@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LoginFormData } from "../../hooks/DataTypes";
 import toast from "react-hot-toast";
-
+import { useAuthContext } from "../../context/Auth";
 export default function Login() {
   const loginMutation = useLogin();
   const [showPassword, setShowPassword] = useState(false);
-
+  const { setUser } = useAuthContext()!;
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -24,6 +24,7 @@ export default function Login() {
   const onSubmit = async (data: LoginFormData) => {
     try {
       await loginMutation.mutateAsync(data);
+      setUser(true);
     } catch (error) {
       console.error("Login error: ", error);
     }
@@ -119,13 +120,12 @@ export default function Login() {
             </div>
             {(loginMutation.isSuccess || loginMutation.isError) && (
               <div
-                className={`  ${
+                className={` my-2  ${
                   loginMutation?.data?.message
                     ? "text-blue-600"
                     : "text-red-600"
                 }`}
               >
-                {loginMutation.error?.message}
                 {loginMutation?.data?.message}
                 {(loginMutation?.error?.response?.data as any)?.message}
               </div>

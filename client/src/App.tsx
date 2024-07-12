@@ -4,6 +4,7 @@ import SignUp from "./components/ui/SignUp";
 import Login from "./components/ui/Login";
 import OtpInput from "./components/Pages/Otp";
 import { Toaster } from "react-hot-toast";
+import { AuthContextProvider } from "./context/Auth";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -37,8 +38,10 @@ const browserRouter = createBrowserRouter([
 export default function App() {
   return (
     <>
-      <RouterProvider router={browserRouter} />
-      <Toaster />
+      <AuthContextProvider>
+        <RouterProvider router={browserRouter} />
+        <Toaster />
+      </AuthContextProvider>
     </>
   );
 }
