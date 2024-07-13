@@ -15,7 +15,7 @@ const NavItems = (
       <Link to="/courses">Course</Link>
     </li>
     <li>
-      <a>Contact</a>
+      <Link to="/contact">Contact</Link>
     </li>
     <li>
       <a>About</a>
@@ -175,7 +175,7 @@ export default function Navbar() {
                     console.error("Logout error: ", error);
                   }
                 }}
-                className="bg-black text-white px-2 py-2 rounded-md btn hover:bg-slate-800 duration-300 cursor-pointer"
+                className="bg-red-500 text-white px-2 py-2 rounded-md btn hover:bg-slate-800 duration-300 cursor-pointer"
               >
                 Logout
               </button>
