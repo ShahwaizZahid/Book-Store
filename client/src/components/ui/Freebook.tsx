@@ -1,12 +1,14 @@
+import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from "./Cards";
 import { useBook } from "../../hooks/useBooks";
-import { BookInfo } from "../../hooks/useBooks";
+import { BookInfo } from "../../hooks/DataTypes";
 import CardSkelton from "./CardSkelton";
 import { settings } from "../../hooks/DataTypes";
 import { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 export default function Freebook() {
   const { isLoading, data = [], error } = useBook();
@@ -42,7 +44,9 @@ export default function Freebook() {
         ) : (
           <Slider {...settings}>
             {filteredData.map((item: BookInfo) => (
-              <Cards item={item} key={item.id} />
+              <Link to={`/detail/${item.id}`} key={item.id}>
+                <Cards item={item} />
+              </Link>
             ))}
           </Slider>
         )}

@@ -18,7 +18,7 @@ const NavItems = (
       <Link to="/contact">Contact</Link>
     </li>
     <li>
-      <a>About</a>
+      <Link to="/about">About</Link>
     </li>
   </>
 );
@@ -60,10 +60,10 @@ export default function Navbar() {
 
   return (
     <div
-      className={`w-full md:px-20 px-4 fixed top-0 left-0 right-0 z-50 dark:bg-slate-900 dark:text-white ${
+      className={`w-full md:px-20 px-4 fixed top-0 left-0 right-0 z-50 dark:bg-slate-800 dark:text-white ${
         sticky
-          ? "sticky-navbar shadow-md bg-base-200 duration-300 dark:bg-slate-800 transition-all ease-in-out"
-          : "dark:bg-slate-900"
+          ? "sticky-navbar shadow-md bg-base-200 duration-300 dark:bg-slate-700 transition-all ease-in-out"
+          : "first-letter:"
       }`}
     >
       <div className="navbar">

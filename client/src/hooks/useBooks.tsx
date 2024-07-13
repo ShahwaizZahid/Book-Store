@@ -1,27 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-export type BookInfo = {
-  id: string;
-  volumeInfo: {
-    price: string;
-    category: string;
-    title: string;
-    subtitle: string;
-    authors: string[];
-    publisher: string;
-    publishedDate: string;
-    description: string;
-    pageCount: number;
-    categories: string[];
-    imageLinks: {
-      thumbnail: string;
-    };
-    language: string;
-  };
-  searchInfo: {
-    textSnippet: string;
-  };
-};
+import { BookInfo } from "./DataTypes";
 export const useBook = () => {
   const fetchBooks = async () => {
     try {

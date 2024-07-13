@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../ui/Navbar";
-import ContactUsCard from "../ui/ContactUsCard";
+import AboutUsCard from "../ui/AboutUsCard";
 import Footer from "../ui/Footer";
-export default function ContactUs() {
+export default function AboutUs() {
   return (
     <>
       <Navbar />
-      <ContactUsCard />
+      <AboutUsCard />
       <Footer />
     </>
   );

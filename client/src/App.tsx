@@ -6,12 +6,14 @@ import Login from "./components/ui/Login";
 import OtpInput from "./components/Pages/Otp";
 import { Toaster } from "react-hot-toast";
 import ContactUs from "./components/Pages/ContactUs";
+import About from "./components/Pages/AboutUs";
 import { AuthContextProvider, useAuthContext } from "./context/Auth";
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from "react-router-dom";
+import BookDetail from "./components/Pages/BookDetails";
 
 function AppRoutes() {
   // Get the user context inside the route setup
@@ -41,6 +43,39 @@ function AppRoutes() {
     {
       path: "/contact",
       element: <ContactUs />,
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+    {
+      path: "/detail/:id",
+      element: (
+        <BookDetail
+          book={{
+            id: "",
+            volumeInfo: {
+              price: "",
+              category: "",
+              title: "",
+              subtitle: "",
+              authors: [],
+              publisher: "",
+              publishedDate: "",
+              description: "",
+              pageCount: 0,
+              categories: [],
+              imageLinks: {
+                thumbnail: "",
+              },
+              language: "",
+            },
+            searchInfo: {
+              textSnippet: "",
+            },
+          }}
+        />
+      ),
     },
   ]);
 
