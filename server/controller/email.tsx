@@ -28,7 +28,7 @@ export const VerifyIdentityEmail = ({
           }
           width="212"
           height="88"
-          alt="Pog Blog"
+          alt="BoundBookry"
           style={logo}
         />
         <Text style={tertiary}>Verify Your Identity</Text>
@@ -42,7 +42,7 @@ export const VerifyIdentityEmail = ({
         <Text style={paragraph}>
           Contact{" "}
           <Link href="mailto:fexxix@gmail.com" style={link}>
-            fexxix@gmail.com
+            shahwaizmughal940@gmail.com
           </Link>{" "}
           if you did not request this code.
         </Text>
