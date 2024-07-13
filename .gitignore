@@ -1,0 +1,8 @@
+# For Srrver
+server/node_modules
+server/.env
+
+
+# For Client
+client/node_modules
+client/.env
