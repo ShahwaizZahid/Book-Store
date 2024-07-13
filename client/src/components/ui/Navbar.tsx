@@ -92,7 +92,7 @@ export default function Navbar() {
               {NavItems}
             </ul>
           </div>
-          <a className="text-2xl font-bold cursor-pointer">BookStore</a>
+          <a className="text-2xl font-bold cursor-pointer">BoundBookery</a>
         </div>
         <div className="navbar-end space-x-3">
           <div className="navbar-center hidden lg:flex">

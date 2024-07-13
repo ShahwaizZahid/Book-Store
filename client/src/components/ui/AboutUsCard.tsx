@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function AboutUsCard() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-slate-900 flex justify-center items-center p-8">
@@ -8,10 +6,10 @@ export default function AboutUsCard() {
           About Us
         </h2>
         <p className="mb-4 dark:text-gray-200">
-          Welcome to our bookstore! We are dedicated to providing a wide range
-          of books for readers of all ages and interests. Whether you're looking
-          for the latest bestseller or a classic novel, we have something for
-          everyone.
+          Welcome to our BoundBookery! We are dedicated to providing a wide
+          range of books for readers of all ages and interests. Whether you're
+          looking for the latest bestseller or a classic novel, we have
+          something for everyone.
         </p>
         <p className="mb-4 dark:text-gray-200">
           Our home page features a banner showcasing our latest offers and a
@@ -36,7 +34,7 @@ export default function AboutUsCard() {
           the contact page and get in touch with us.
         </p>
         <p className="mb-4 dark:text-gray-200">
-          Thank you for choosing our bookstore. Happy reading!
+          Thank you for choosing our BoundBookery. Happy reading!
         </p>
       </div>
     </div>

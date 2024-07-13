@@ -10,14 +10,12 @@ export default function Banner() {
             </h1>
             <p className=" text-xl ">
               <span className=" font-semibold text-pink-500">
-                Welcome to [Your Bookstore App Name] - Your Ultimate Book
-                Destination!
+                Welcome to BoundBookery - Your Ultimate Book Destination!
                 <br></br>
               </span>
-              Discover a world of books at your fingertips with [Your Bookstore
-              App Name]. Whether you're an avid reader or a casual browser, our
-              app offers a seamless and enjoyable experience for all book
-              lovers.
+              Discover a world of books at your fingertips with BoundBookery .
+              Whether you're an avid reader or a casual browser, our app offers
+              a seamless and enjoyable experience for all book lovers.
             </p>
             <label className="input input-bordered flex items-center gap-2 dark:bg-slate-900 dark:text-white dark:border-white">
               <svg

@@ -1,8 +1,8 @@
 import React from "react";
 import Home from "./components/Pages/Home";
 import Courses from "./components/Pages/Courses";
-import SignUp from "./components/ui/SignUp";
-import Login from "./components/ui/Login";
+import SignUp from "./components/Pages/SignUp";
+import Login from "./components/Pages/Login";
 import OtpInput from "./components/Pages/Otp";
 import { Toaster } from "react-hot-toast";
 import ContactUs from "./components/Pages/ContactUs";

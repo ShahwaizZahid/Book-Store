@@ -24,7 +24,7 @@ export default function Freebook() {
       <div>
         <h1 className="font-semibold text-xl pb-2">Free offered courses</h1>
         <p>
-          At [Your Bookstore Name], we believe that the joy of reading should be
+          At BoundBookery, we believe that the joy of reading should be
           accessible to everyone. That's why we're thrilled to offer a curated
           selection of free books for our valued readers. Dive into a world of
           stories, knowledge, and inspiration without spending a dime.

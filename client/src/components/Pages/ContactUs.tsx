@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../ui/Navbar";
 import ContactUsCard from "../ui/ContactUsCard";
 import Footer from "../ui/Footer";
