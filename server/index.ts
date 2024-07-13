@@ -1,25 +1,27 @@
 import express from "express";
 import mongoose from "mongoose";
-const app = express();
 import cookieParser from "cookie-parser";
-const cors = require("cors");
-import { sendVerificationEmail } from "./controller/sendEmail";
-import { connectToMongo } from "./services/connect";
+import cors from "cors";
 import { bookRouter } from "./route/book";
 import { UserAuth } from "./route/user";
+import { connectToMongo } from "./services/connect";
+import { sendVerificationEmail } from "./controller/sendEmail";
+
+const app = express();
+require("dotenv").config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL,
     credentials: true,
   })
 );
-app.use(cookieParser());
-require("dotenv").config();
 
 const MONGO: string = process.env.MONGO ?? "String Not defined";
+
 connectToMongo(MONGO)
   .then(() => {
     console.log("Mongo DB successfully connected !");

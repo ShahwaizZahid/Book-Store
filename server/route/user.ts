@@ -7,7 +7,7 @@ import {
   handleMe,
   handleLogout,
 } from "../controller/user";
-import { authenticateJWT } from "../middleware/user";
+
 export const UserAuth = express.Router();
 
 UserAuth.post("/signup", handleUserSignup);
