@@ -41,7 +41,7 @@ const OtpInput = () => {
   useEffect(() => {
     setTimeout(() => {
       setEnable(false);
-    }, 6000);
+    }, 60000);
   }, [enable]);
 
   useEffect(() => {

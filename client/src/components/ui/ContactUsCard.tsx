@@ -7,7 +7,7 @@ export default function ContactUsCard() {
   };
 
   return (
-    <div className="flex min-h-screen justify-center items-center bg-gray-100 dark:bg-slate-900">
+    <div className="flex min-h-screen justify-center items-center bg-gray-100 dark:bg-slate-900 mx-2">
       <div className="bg-white dark:bg-slate-800 p-8 rounded-md shadow-md max-w-lg mx-auto">
         <h2 className="text-3xl font-bold mb-4 text-center dark:text-white">
           Contact Us

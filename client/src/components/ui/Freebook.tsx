@@ -39,6 +39,10 @@ export default function Freebook() {
             <CardSkelton />
             <CardSkelton />
             <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
+            <CardSkelton />
           </Slider>
         ) : (
           <Slider {...settings}>

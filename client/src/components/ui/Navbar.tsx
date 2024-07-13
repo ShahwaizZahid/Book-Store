@@ -59,7 +59,7 @@ export default function Navbar() {
     <div
       className={`w-full md:px-20 px-4 fixed top-0 left-0 right-0 z-50 dark:bg-slate-800 dark:text-white ${
         sticky
-          ? "sticky-navbar shadow-md bg-base-200 duration-300 dark:bg-slate-700 transition-all ease-in-out"
+          ? "sticky-navbar shadow-md bg-base-200 duration-100 dark:bg-slate-600 transition-all ease-in-out"
           : "first-letter:"
       }`}
     >
@@ -149,7 +149,7 @@ export default function Navbar() {
             <div>
               <Link
                 to="/login"
-                className="bg-black text-white px-2 py-2 rounded-md btn hover:bg-slate-800 duration-300 cursor-pointer"
+                className="bg-black text-white px-2 py-2 rounded-md btn hover:bg-slate-800 duration-300 cursor-pointer mr-2"
               >
                 Login
               </Link>

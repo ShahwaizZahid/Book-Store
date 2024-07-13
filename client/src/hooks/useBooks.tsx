@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { API_URL } from "../config";
+import { API_URL_book } from "../config";
 
 export const useBook = () => {
   const fetchBooks = async () => {
     try {
-      const response = await axios.get(`${API_URL}/book`, {
+      console.log(API_URL_book);
+      const response = await axios.get(`${API_URL_book}/book`, {
         withCredentials: true,
       });
       return response.data;

@@ -1,4 +1,9 @@
+import { GMAIL_LINK } from "../../config";
 export default function Banner() {
+  const handleContactClick = () => {
+    const gmailComposeUrl = ` ${GMAIL_LINK}`;
+    window.open(gmailComposeUrl, "_blank");
+  };
   return (
     <>
       <div className="w-full   md:px-20 px-4 flex flex-col-reverse md:flex-row my-10">
@@ -34,7 +39,12 @@ export default function Banner() {
               />
             </label>
           </div>
-          <button className="btn btn-secondary mt-6">Secondary</button>
+          <button
+            className="btn btn-secondary mt-6"
+            onClick={handleContactClick}
+          >
+            Contact us
+          </button>
         </div>
         <div className="w-full md:w-1/2">
           <img src="Banner.png" className="w-92 h-92S " alt="" />

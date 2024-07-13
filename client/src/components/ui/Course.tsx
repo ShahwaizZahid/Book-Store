@@ -32,7 +32,7 @@ export default function Course() {
         </div>
 
         {isLoading || !Array.isArray(data) || data.length === 0 ? (
-          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
+          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center justify-items-center">
             <CardSkelton />
             <CardSkelton />
             <CardSkelton />
@@ -42,7 +42,7 @@ export default function Course() {
             <CardSkelton />
           </div>
         ) : (
-          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
+          <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center justify-items-center">
             {data.map((item: BookInfo) => (
               <Link to={`/detail/${item._id}`} key={item._id}>
                 <Cards item={item} />
