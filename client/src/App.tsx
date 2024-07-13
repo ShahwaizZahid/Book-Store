@@ -50,32 +50,7 @@ function AppRoutes() {
     },
     {
       path: "/detail/:id",
-      element: (
-        <BookDetail
-          book={{
-            id: "",
-            volumeInfo: {
-              price: "",
-              category: "",
-              title: "",
-              subtitle: "",
-              authors: [],
-              publisher: "",
-              publishedDate: "",
-              description: "",
-              pageCount: 0,
-              categories: [],
-              imageLinks: {
-                thumbnail: "",
-              },
-              language: "",
-            },
-            searchInfo: {
-              textSnippet: "",
-            },
-          }}
-        />
-      ),
+      element: <BookDetail />,
     },
   ]);
 

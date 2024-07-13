@@ -49,7 +49,7 @@ export const settings = {
 };
 
 export type BookInfo = {
-  id: string;
+  _id: string;
   volumeInfo: {
     price: string;
     category: string;

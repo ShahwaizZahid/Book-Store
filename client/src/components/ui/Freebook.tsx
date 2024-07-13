@@ -44,7 +44,7 @@ export default function Freebook() {
         ) : (
           <Slider {...settings}>
             {filteredData.map((item: BookInfo) => (
-              <Link to={`/detail/${item.id}`} key={item.id}>
+              <Link to={`/detail/${item._id}`} key={item._id}>
                 <Cards item={item} />
               </Link>
             ))}

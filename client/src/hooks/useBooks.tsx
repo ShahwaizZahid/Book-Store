@@ -19,6 +19,7 @@ export const useBook = () => {
     queryFn: fetchBooks,
   });
 
+  console.log(data);
   return {
     data,
     error,

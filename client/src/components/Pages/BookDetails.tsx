@@ -1,33 +1,18 @@
 import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useBook } from "../../hooks/useBooks";
+import { BookInfo } from "../../hooks/DataTypes";
 
-export type BookInfo = {
-  id: string;
-  volumeInfo: {
-    price: string;
-    category: string;
-    title: string;
-    subtitle: string;
-    authors: string[];
-    publisher: string;
-    publishedDate: string;
-    description: string;
-    pageCount: number;
-    categories: string[];
-    imageLinks: {
-      thumbnail: string;
-    };
-    language: string;
-  };
-  searchInfo: {
-    textSnippet: string;
-  };
-};
+const BookDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const { data: books } = useBook();
+  const navigate = useNavigate();
 
-type BookDetailProps = {
-  book: BookInfo;
-};
+  // Find the book only if books are available
+  const book = books ? books.find((book: BookInfo) => book._id === id) : null;
 
-const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
+  if (!book) return <div>Book not found</div>;
+
   const {
     title,
     subtitle,
@@ -45,7 +30,13 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
 
   return (
     <div className="flex flex-col items-center bg-gray-100 dark:bg-slate-900 p-8 min-h-screen">
-      <div className="bg-white dark:bg-slate-800 p-8 rounded-md shadow-md max-w-2xl w-full">
+      <button
+        className="my-8 border-2 border-white py-2 px-3 rounded-lg bg-pink-500 hover:bg-transparent"
+        onClick={() => navigate(-1)} // Use navigate for back
+      >
+        Back
+      </button>
+      <div className="bg-white dark:bg-slate-800 p-8 rounded-md shadow-md max-w-[80%] w-full">
         <div className="flex flex-col md:flex-row mb-4">
           {imageLinks?.thumbnail && (
             <img

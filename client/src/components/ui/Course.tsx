@@ -1,6 +1,7 @@
+import React from "react";
 import Cards from "./Cards";
 import { Link } from "react-router-dom";
-import { BookInfo } from "../../hooks/useBooks";
+import { BookInfo } from "../../hooks/DataTypes";
 import { useBook } from "../../hooks/useBooks";
 import CardSkelton from "./CardSkelton";
 
@@ -30,6 +31,7 @@ export default function Course() {
             <Link to="/"> Back</Link>
           </button>
         </div>
+
         {isLoading || !Array.isArray(data) || data.length === 0 ? (
           <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
             <CardSkelton />
@@ -43,7 +45,9 @@ export default function Course() {
         ) : (
           <div className="mt-12 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
             {data.map((item: BookInfo) => (
-              <Cards key={item.id} item={item} />
+              <Link to={`/detail/${item._id}`} key={item._id}>
+                <Cards item={item} />
+              </Link>
             ))}
           </div>
         )}
