@@ -25,13 +25,15 @@ const NavItems = (
 
 export default function Navbar() {
   const logoutMutation = useLogout();
-
   const { user, setUser } = useAuthContext()!;
+  const [sticky, setSticky] = useState(false);
   const [theme, setTheme] = useState<string>(
     localStorage.getItem("theme") || "light"
   );
+
   const element = document.documentElement;
 
+  // Set theme useEffect
   useEffect(() => {
     if (theme === "dark") {
       element.classList.add("dark");
@@ -44,8 +46,7 @@ export default function Navbar() {
     }
   }, [theme]);
 
-  const [sticky, setSticky] = useState(false);
-
+  // color change on scrolling navbar
   useEffect(() => {
     const handleScroll = () => {
       setSticky(window.scrollY > 0);
@@ -53,10 +54,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <div

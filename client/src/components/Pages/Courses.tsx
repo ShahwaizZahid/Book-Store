@@ -1,6 +1,7 @@
 import Navbar from "../ui/Navbar";
 import Footer from "../ui/Footer";
 import Course from "../ui/Course";
+
 export default function Courses() {
   return (
     <>

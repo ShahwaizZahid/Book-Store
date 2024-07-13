@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { OTPFormData } from "../../hooks/DataTypes";
 import toast from "react-hot-toast";
+import { API_URL } from "../../config";
 
 const OtpInput = () => {
   const [enable, setEnable] = useState(true);
@@ -54,16 +55,11 @@ const OtpInput = () => {
   }, [otp]);
 
   const sendOtpToServer = async (data: any) => {
-    console.log(state.email);
-    console.log(data);
-
     const newData = { ...data, email: state.email };
-
     await OTPVerifyMutation.mutateAsync(newData);
   };
 
   const sendEmailToserver = async () => {
-    console.log(state.email);
     const demo = { otp: "123345" };
     const newData = { ...demo, email: state.email };
     await OtpAgainMutation.mutateAsync(newData);
@@ -129,6 +125,7 @@ const OtpInput = () => {
 type Data = {
   email: any;
 };
+
 export default OtpInput;
 
 function useOTPVerifyMutation() {
@@ -137,8 +134,7 @@ function useOTPVerifyMutation() {
   return useMutation<any, AxiosError, Data>({
     mutationKey: ["otp"],
     mutationFn: async (data) => {
-      return (await axios.post(`http://localhost:4000/auth/verify-email`, data))
-        .data;
+      return (await axios.post(`${API_URL}/verify-email`, data)).data;
     },
     onSuccess: (_, { email }) => {
       toast.success("OTP verified successfully!");
@@ -165,8 +161,7 @@ function useOAgainOtpMutation() {
   return useMutation<any, AxiosError, OTPFormData>({
     mutationKey: ["otp"],
     mutationFn: async (data) => {
-      return (await axios.post(`http://localhost:4000/auth/otp-again`, data))
-        .data;
+      return (await axios.post(`${API_URL}/otp-again`, data)).data;
     },
     onSuccess: () => {
       toast.success("OTP sent again successfully!");

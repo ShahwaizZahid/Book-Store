@@ -1,14 +1,12 @@
 import { createContext, useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-
-// Define a type for the user state
+import { API_URL } from "../config";
 type User = {
   user: boolean;
   userId: string | null;
 };
 
-// Define the context type with proper type for `user` and `setUser`
 type AuthContextType = {
   user: User;
   setUser: (user: User) => void;
@@ -33,10 +31,10 @@ export function AuthContextProvider({
 }) {
   const [user, setUser] = useState<User>({ user: false, userId: null });
 
-  const { data, isLoading, error, isSuccess } = useQuery<User, AxiosError>({
+  const { isLoading } = useQuery<User, AxiosError>({
     queryKey: ["user"],
     queryFn: async () => {
-      const response = await axios.get("http://localhost:4000/auth/me", {
+      const response = await axios.get(`${API_URL}/me`, {
         withCredentials: true,
       });
 

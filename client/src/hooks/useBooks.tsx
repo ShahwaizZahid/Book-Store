@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { BookInfo } from "./DataTypes";
+import { API_URL } from "../config";
+
 export const useBook = () => {
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/book", {
+      const response = await axios.get(`${API_URL}/book`, {
         withCredentials: true,
       });
       return response.data;
@@ -19,7 +20,6 @@ export const useBook = () => {
     queryFn: fetchBooks,
   });
 
-  console.log(data);
   return {
     data,
     error,

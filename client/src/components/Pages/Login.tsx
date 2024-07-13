@@ -7,12 +7,11 @@ import { useState } from "react";
 import { LoginFormData } from "../../hooks/DataTypes";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../../context/Auth";
+import { API_URL } from "../../config";
+
 export default function Login() {
   const loginMutation = useLogin();
   const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
 
   const {
     register,
@@ -26,6 +25,9 @@ export default function Login() {
     } catch (error) {
       console.error("Login error: ", error);
     }
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -143,14 +145,14 @@ function useLogin() {
     mutationKey: ["login"],
     mutationFn: async ({ email, password }) => {
       const res = await axios.post(
-        "http://localhost:4000/auth/login",
+        `${API_URL}/login`,
         { email, password },
         { withCredentials: true }
       );
       setUser({ user: true, userId: res.data.user._id });
       return res.data;
     },
-    onSuccess: ({ user }) => {
+    onSuccess: () => {
       toast.success("Login successful!");
       navigate("/courses", { replace: true });
       console.log("Login successfully");
@@ -158,11 +160,9 @@ function useLogin() {
     onError: (error) => {
       console.error("Login failed: ", error);
 
-      // Type assertion for error response
       const errorMessage =
         (error.response?.data as { message?: string })?.message ||
         "An error occurred during login";
-
       toast.error(errorMessage);
     },
   });

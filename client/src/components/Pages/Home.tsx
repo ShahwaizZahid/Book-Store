@@ -2,6 +2,7 @@ import Navbar from "../ui/Navbar";
 import Banner from "../ui/Banner";
 import Footer from "../ui/Footer";
 import Freebook from "../ui/Freebook";
+
 export default function Home() {
   return (
     <>

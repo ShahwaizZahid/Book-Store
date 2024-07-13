@@ -6,13 +6,12 @@ import { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { SignupFormData } from "../../hooks/DataTypes";
 import toast from "react-hot-toast";
+import { API_URL } from "../../config";
 
 export default function SignUp() {
   const signupMutation = useSignup();
   const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
+
   const {
     register,
     handleSubmit,
@@ -22,6 +21,10 @@ export default function SignUp() {
   const onSubmit = async (data: any) => {
     await signupMutation.mutateAsync(data);
     console.log("measss", signupMutation?.data?.message);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -179,7 +182,7 @@ function useSignup() {
     mutationKey: ["signup"],
     mutationFn: async ({ email, password, name }) => {
       const res = await axios.post(
-        "http://localhost:4000/auth/signup",
+        `${API_URL}/signup`,
         {
           email,
           password,

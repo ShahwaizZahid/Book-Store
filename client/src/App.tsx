@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./components/Pages/Home";
 import Courses from "./components/Pages/Courses";
 import SignUp from "./components/Pages/SignUp";
@@ -16,7 +15,6 @@ import {
 import BookDetail from "./components/Pages/BookDetails";
 
 function AppRoutes() {
-  // Get the user context inside the route setup
   const { user } = useAuthContext();
 
   const browserRouter = createBrowserRouter([

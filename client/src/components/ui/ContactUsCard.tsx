@@ -1,9 +1,11 @@
+import { GMAIL_LINK } from "../../config";
+
 export default function ContactUsCard() {
   const handleContactClick = () => {
-    const gmailComposeUrl =
-      "https://mail.google.com/mail/?view=cm&fs=1&to=shahwaizmughal940@gmail.com";
+    const gmailComposeUrl = ` ${GMAIL_LINK}`;
     window.open(gmailComposeUrl, "_blank");
   };
+
   return (
     <div className="flex min-h-screen justify-center items-center bg-gray-100 dark:bg-slate-900">
       <div className="bg-white dark:bg-slate-800 p-8 rounded-md shadow-md max-w-lg mx-auto">
