@@ -1,0 +1,453 @@
+[
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React Projects",
+      "subtitle": "Build 12 real-world applications from scratch using React, React Native, and React 360",
+      "authors": ["Roy Derks"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2019-12-20",
+      "description": "Build cross-platform applications of varying complexity for the web, mobile, and VR devices using React tooling Key FeaturesBuild React applications at scale using effective React patterns and best practicesExplore React features such as Hooks, the Context API, and the Suspense APIExtend React’s integration with React Native for building cross-platform mobile apps and gamesBook Description Developed by Facebook, React is a popular library for building impressive user interfaces. React extends its capabilities to the mobile platform using the React Native framework and integrates with popular web and mobile tools to build scalable applications. React Projects is your guide to learning React development by using modern development patterns and integrating React with powerful web tools such as GraphQL, Expo, and React 360. You'll start building a real-world project right from the first chapter and get hands on with developing scalable applications as you advance to building more complex projects. Throughout the book, you'll use the latest versions of React and React Native to explore features such as Higher Order Components (HOC), Context, and Hooks on multiple platforms, which will help you build full stack web and mobile applications efficiently. Finally, you'll delve into unit testing with Jest to build test-driven apps. By the end of this React book, you'll have developed the skills necessary to start building scalable React apps across web and mobile platforms. What you will learnCreate a wide range of applications using various modern React tools and frameworksDiscover how React Hooks modernize state management for React appsDevelop progressive web applications using React componentsBuild test-driven React applications using the Jest and Enzyme frameworksUnderstand full stack development using React, Apollo, and GraphQLPerform server-side rendering using React and React RouterDesign gestures and animations for a cross-platform game using React NativeWho this book is for The book is for JavaScript developers who want to explore React tooling and frameworks for building cross-platform applications. Basic knowledge of web development, ECMAScript, and React will assist with understanding key concepts covered in this book.",
+      "pageCount": 465,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=2HvGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "Basic knowledge of web development, ECMAScript, and React will assist with understanding key concepts covered in this book."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "120",
+      "category": "paid",
+      "title": "React and React Native",
+      "authors": ["Adam Boduch"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2017-03-08",
+      "description": "Use React and React Native to build applications for desktop browsers, mobile browsers, and even as native mobile apps About This Book Build React and React Native applications using familiar component concepts Dive deep into each platform, from routing in React to creating native mobile applications that can run offline Use Facebook's Relay, React and GraphQL technologies, to create a unified architecture that powers both web and native applications Who This Book Is For This book is written for any JavaScript developer—beginner or expert—who wants to start learning how to put both of Facebook's UI libraries to work. No knowledge of React is needed, though a working knowledge of ES2015 will help you follow along better. What You Will Learn Craft reusable React components Control navigation using the React Router to help keep your UI in sync with URLs Build isomorphic web applications using Node.js Use the Flexbox layout model to create responsive mobile designs Leverage the native APIs of Android and iOS to build engaging applications with React Native Respond to gestures in a way that's intuitive for the user Use Relay to build a unified data architecture for your React UIs In Detail React and React Native allow you to build cross-platform desktop and mobile applications using Facebook's innovative UI libraries. Combined with the Flux data architecture and Relay, you can now create powerful and feature-complete applications from just one code base! This book is split into three parts. The first part shows you how to start crafting composable UIs using React, from rendering with JSX and creating reusable components through to routing and creating isomorphic applications that run on Node. We then move on to showing you how to take the concepts of React and apply them to building Native UIs using React Native. You'll find out how to build responsive and streamlined UIs that can properly handle user interactions in a mobile environment. You'll also learn how to access device-specific APIs such as the geolocation API, and how to handle offline development with React Native. Finally, we'll tie all of these skills together and shows you how you can create React applications that run on every major platform. As well as understanding application state in depth, you'll learn how to leverage Relay to make feature-complete, data-driven web and native mobile applications. Style and approach Split into three major sections to help organize your learning, this hands-on, code-first book will help you get up to speed with React and React Native—the UI framework that powers Netflix, Yahoo, and Facebook.",
+      "pageCount": 485,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=jLkrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "Use React and React Native to build applications for desktop browsers, mobile browsers, and even as native mobile apps About This Book Build React and React Native applications using familiar component concepts Dive deep into each platform, ..."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React Quickly, Second Edition",
+      "authors": ["Morten Barklund", "Azat Mardan"],
+      "publisher": "Simon and Schuster",
+      "publishedDate": "2023-09-05",
+      "description": "Learn the skills you need to build React applications quickly! This fully revised second edition introduces functional components, React hooks, static site generators, and more. In React Quickly, Second Edition you will learn how to: Master React fundamentals Implement best practices and the components of good architecture Build intuitive user interfaces Create dynamic components with JSX Use lightweight functional components in React Make your app interactive with stateful components Utilize React hooks Handle events like button clicks and pass data between components Build your skills with React fast! There’s no slow theory and tedious history in React Quickly—you’ll dive into React code right from the very first chapter. As you go, you’ll explore over 80 useful and practical examples that put React into action. This new second edition has been completely rewritten to cover the latest developments in the React framework. Perfect, whether you’re a React beginner or an experienced pro looking to keep their skills up to date. Purchase of the print book includes a free eBook in PDF, Kindle, and ePub formats from Manning Publications. About the technology React makes it a breeze to build beautiful, reliable web frontends. This amazing JavaScript library has a modular architecture, so you can create, combine, and test components seamlessly. React is perfect for small prototypes, enterprise scale sites, and everything in between. About the book React Quickly, Second Edition offers a unique approach to learning the React framework. More than 80 concise examples guide you from your first steps through advanced applications. You’ll appreciate the up-to-date coverage of functional components, React hooks, and web accessibility, along with interesting projects to practice your new skill. What's inside Master React fundamentals Best practices of component-based design Create dynamic components with JSX Make your app interactive with stateful components About the reader For developers comfortable building web applications with JavaScript. About the author Morten Barklund is an expert in React, web testing, and accessibility and is the founder of Coding Heaven. Azat Mardan is a seasoned software engineer, startup mentor, and best-selling author. Table of Contents 1 Meeting React 2 Baby steps with React 3 Introduction to JSX 4 Functional Components 5 Making React interactive with states 6 Effects and the React component life cycle 7 Hooks to fuel your web applications 8 Handling events in React 9 Working with forms in React 10 Advanced React hooks for scaling 11 Project: Website menu 12 Project: Timer 13 Project: Task manager",
+      "pageCount": 454,
+      "printType": "BOOK",
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=KOXPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "The book teaches you how React thinks, introducing ways of structuring your architecture that even work with large teams. React Quickly, Second Edition is a practical guide to React for busy web developers."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "1230",
+      "category": "paid",
+      "title": "Full-Stack React, TypeScript, and Node",
+      "subtitle": "Build cloud-ready web applications using React 17 with Hooks and GraphQL",
+      "authors": ["David Choi"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2020-12-18",
+      "description": "Discover the current landscape of full-stack development and how to leverage modern web technologies for building production-ready React.js applications to deploy on AWS Key FeaturesUnderstand the architecture of React and single-page applicationsBuild a modern Web API for your SPA using Node.js, Express, and GraphQLGain a clear and practical understanding of how to build a complete full-stack applicationBook Description React sets the standard for building high-performance client-side web apps. Node.js is a scalable application server that is used in thousands of websites, while GraphQL is becoming the standard way for large websites to provide data and services to their users. Together, these technologies, when reinforced with the capabilities of TypeScript, provide a cutting-edge stack for complete web application development. This book takes a hands-on approach to implementing modern web technologies and the associated methodologies for building full-stack apps. You’ll begin by gaining a strong understanding of TypeScript and how to use it to build high-quality web apps. The chapters that follow delve into client-side development with React using the new Hooks API and Redux. Next, you’ll get to grips with server-side development with Express, including authentication with Redis-based sessions and accessing databases with TypeORM. The book will then show you how to use Apollo GraphQL to build web services for your full-stack app. Later, you’ll learn how to build GraphQL schemas and integrate them with React using Hooks. Finally, you’ll focus on how to deploy your application onto an NGINX server using the AWS cloud. By the end of this book, you’ll be able to build and deploy complete high-performance web applications using React, Node, and GraphQL. What you will learnDiscover TypeScript’s most important features and how they can be used to improve code quality and maintainabilityUnderstand what React Hooks are and how to build React apps using themImplement state management for your React app using ReduxSet up an Express project with TypeScript and GraphQL from scratchBuild a fully functional online forum app using React and GraphQLAdd authentication to your web app using RedisSave and retrieve data from a Postgres database using TypeORMConfigure NGINX on the AWS cloud to deploy and serve your appsWho this book is for The book is for web developers who want to go beyond front-end web development and enter the world of full-stack web development by learning about modern web technologies and how they come together. A good understanding of JavaScript programming is required before getting started with this web development book.",
+      "pageCount": 648,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=uUMQEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "This book takes a hands-on approach to implementing modern web technologies and the associated methodologies for building full-stack apps."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "1300",
+      "category": "paid",
+      "title": "React and React Native",
+      "subtitle": "A complete hands-on guide to modern web and mobile development with React.js",
+      "authors": ["Adam Boduch", "Roy Derks"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2020-04-30",
+      "description": "Get up to speed with React, React Native, GraphQL and Apollo for building cross-platform native apps with the help of practical examples Key FeaturesCovers the latest features of React such as Hooks, Suspense, NativeBase, and Apollo in this updated third editionGet to grips with the React architecture for writing easy-to-manage web and mobile applicationsUnderstand GraphQL and Apollo for building a scalable backend for your cross-platform appsBook Description React and React Native, Facebook's innovative User Interface (UI) libraries, are designed to help you build robust cross-platform web and mobile applications. This updated third edition is improved and updated to cover the latest version of React. The book particularly focuses on the latest developments in the React ecosystem, such as modern Hook implementations, code splitting using lazy components and Suspense, user interface framework components using Material-UI, and Apollo. In terms of React Native, the book has been updated to version 0.62 and demonstrates how to apply native UI components for your existing mobile apps using NativeBase. You will begin by learning about the essential building blocks of React components. Next, you'll progress to working with higher-level functionalities in application development, before putting this knowledge to use by developing user interface components for the web and for native platforms. In the concluding chapters, you'll learn how to bring your application together with a robust data architecture. By the end of this book, you'll be able to build React applications for the web and React Native applications for multiple mobile platforms. What you will learnDelve into the React architecture, component properties, state, and contextGet to grips with React Hooks for handling functions and componentsImplement code splitting in React using lazy components and SuspenseBuild robust user interfaces for mobile and desktop apps using Material-UIWrite shared components for Android and iOS mobile apps using React NativeSimplify layout design for React Native apps using NativeBaseWrite GraphQL schemas to power web and mobile appsImplement web and mobile components that are driven by ApolloWho this book is for This book is for any JavaScript developer who wants to start learning how to use Facebook's UI libraries, React and React Native, for mobile and web application development. Although no prior knowledge of React is needed, working knowledge of JavaScript programming will help you understand the concepts covered in the book more effectively.",
+      "pageCount": 505,
+      "printType": "BOOK",
+      "categories": ["Computers"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": true,
+      "contentVersion": "1.3.3.0.preview.2",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=XCLhDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "By the end of this book, you&#39;ll be able to build React applications for the web and React Native applications for multiple mobile platforms."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "Learning React",
+      "subtitle": "Modern Patterns for Developing React Apps",
+      "authors": ["Alex Banks", "Eve Porcello"],
+      "publisher": "O'Reilly Media",
+      "publishedDate": "2020-06-12",
+      "description": "If you want to learn how to build efficient React applications, this is your book. Ideal for web developers and software engineers who understand how JavaScript, CSS, and HTML work in the browser, this updated edition provides best practices and patterns for writing modern React code. No prior knowledge of React or functional JavaScript is necessary. With their learning road map, authors Alex Banks and Eve Porcello show you how to create UIs that can deftly display changes without page reloads on large-scale, data-driven websites. You’ll also discover how to work with functional programming and the latest ECMAScript features. Once you learn how to build React components with this hands-on guide, you’ll understand just how useful React can be in your organization. Understand key functional programming concepts with JavaScriptLook under the hood to learn how React runs in the browserCreate application presentation layers with React componentsManage data and reduce the time you spend debugging applicationsIncorporate React Hooks to manage state and fetch dataUse a routing solution for single-page application featuresLearn how to structure React applications with servers in mind",
+      "pageCount": 310,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=tDjrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "If you want to learn how to build efficient React applications, this is your book."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "400",
+      "category": "paid",
+      "title": "React - The Road To Enterprise",
+      "subtitle": "TypeScript Edition",
+      "authors": ["Thomas Findlay"],
+      "publisher": "The Road To Enterprise",
+      "publishedDate": "2022-03-14",
+      "description": "\"React - The Road To Enterprise\" is an advanced book that revolves around best practices, advanced patterns and techniques for the development of React and Next applications in TypeScript. It's a one-stop resource for many crucial concepts that should help you solve and avoid many pain-points when developing React applications. This book covers many advanced topics to help you build maintainable, scalable and performant React applications, such as scalable project architecture, useful techniques for handling async operations and API states, advanced component patterns, performance optimisation, local and global state management patterns, static site generation (SSG) and server side rendering (SSR) with Next.js and more.",
+      "pageCount": 443,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=qOJtEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "This book covers many advanced topics to help you build maintainable, scalable and performant React applications, such as scalable project architecture, useful techniques for handling async operations and API states, advanced component ..."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "4000",
+      "category": "paid",
+      "title": "React: Building Modern Web Applications",
+      "authors": [
+        "Jonathan Hayward",
+        "Artemij Fedosejev",
+        "Narayan Prusty",
+        "Adam Horton",
+        "Ryan Vice",
+        "Ethan Holmes",
+        "Tom Bray"
+      ],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2016-06-10",
+      "description": "Master the art of building dynamic, modern web applications with React About This Book Learn the hot new frontend web framework from Facebook – ReactJS, an easy way of developing the V in MVC and a better approach to software engineering in JavaScript A fast-paced guide to designing and building scalable and maintainable web apps with React.js Learn all the new ES6 features and be among the most prominent JavaScript developers who can write efficient JS programs as per the latest standards Master the art of building modern web applications using React Learn to build modern native iOS and Android applications using JavaScript and the incredible power of React Who This Book Is For This course is for web developers that want to unlock high performance dynamism in the applications that they create. If you want a comprehensive journey into one of the most important JavaScript frameworks around today, dive into this course. What You Will Learn Take control of the front end with reactive JavaScript programming Discover what ReactJS offers your development - before mastering it Create React elements with properties and children Use JSX to speed up your React development process Test your React components with the Jest test framework Learn the latest syntax of ES6 Execute ES6 in a non-supported ES6 environment Learn the principles of object-oriented programming Create a complete single-page application Use an application design plan to write smarter, more meaningful code Learn how to use animations to give extra style to your application Get to grips with the React Native environment Write your own custom native UI components Integrate native modules in Objective-C and Java that interact with JavaScript In Detail ReactJS has helped to transform the web as we know it. Designed by Facebook to help developers build rapid, responsive UI that can deal with data-intensive usage, it's an essential component in any web developer's skillset. This ReactJS course, in five connected modules, provides you with a fast, engaging and practical route into ReactJS—so you can build powerful, elegant, and modern web applications. Beginning with the Reactive Programming with JavaScript module, you will learn how to take advantage of a reactive and functional programming paradigm to rethink how you approach your JavaScript code. It's built to help you understand the concepts, relevant and applicable for any frontend developer. You'll then dive a little deeper into ReactJS. The second module gives you a rapid look through the fundamentals of ReactJS, showing you how to build a basic application and demonstrating how to implement the Flux architecture. In the third module you will get to grips with ES6—this will make you a more fluent JavaScript developer, giving you control over ReactJS. You can put your old JavaScript hacks aside and instead explore how to create ES6 custom iterators. In the final two modules you'll learn how to fully master ReactJS, exploring its wider ecosystem of tools that have helped to make it one of the most important tools in web development today. Ending with insights and guidance on React Native, the tool built for today's demand for native, intuitive user experiences and interfaces, with this course you can be confident in building dynamic and modern apps with React. Style and approach Consisting of five separate modules, journey from the fundamentals of reactive programming to the exciting possibilities of React Native. Each module builds on each other, helping you to incrementally develop your skills and knowledge.",
+      "pageCount": 910,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=jUvZDQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "Master the art of building dynamic, modern web applications with React About This Book Learn the hot new frontend web framework from Facebook – ReactJS, an easy way of developing the V in MVC and a better approach to software engineering ..."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "4000",
+      "category": "paid",
+      "title": "React JS",
+      "subtitle": "3 Books in 1 - \" From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\"",
+      "authors": ["Adrian Roberts"],
+      "publisher": "Independently Published",
+      "publishedDate": "2023-12-07",
+      "description": "\"React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\" is the ultimate guide for anyone aspiring to master the art of front-end development using React JS. Whether you're just starting out or are an intermediate developer looking to upgrade your skills, this book is designed to take you on a comprehensive journey through the world of React, culminating in professional-level mastery. Starting with the basics, this book introduces you to the fundamentals of React JS, ensuring a solid foundation upon which to build. You'll learn about JSX, components, and state management, all explained with clarity and reinforced with practical examples. The book then seamlessly transitions into more complex topics, ensuring a smooth learning curve. As you progress, you will dive deeper into the nuances of React, exploring advanced concepts such as hooks, context API, and state management with Redux. You'll learn how to handle asynchronous operations elegantly, integrate with APIs, and manage application routing and state on a larger scale. \"React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\" doesn't just teach you to code; it guides you in thinking like a React developer. You will understand not only how to do things but also why certain practices are preferred in the React ecosystem. This approach ensures that your learning is holistic and comprehensive. One of the highlights of this book is its focus on real-world application. It teaches you how to build scalable, high-performing web applications and tackles common challenges and best practices in professional development. The book covers performance optimization techniques, ensuring your applications are not only functional but also fast and responsive. By the time you reach the final chapters, you will be equipped with the skills and confidence to build complex and modern web applications. You'll have a thorough understanding of the React ecosystem, including integration with modern tools and libraries, creating an SEO-friendly SPA, and even an introduction to server-side rendering and static site generation. \"React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\" is more than a book; it's a journey into front-end development with React JS. It's filled with expert insights, real-world scenarios, and best practices that will mold you into a proficient React developer, ready to tackle any project with confidence and creativity.",
+      "pageCount": 0,
+      "maturityRating": "NOT_MATURE",
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=2blh0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "&quot;React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications&quot; is the ultimate guide for anyone aspiring to master the art of front-end development using React JS. Whether you&#39;re just starting out or are an intermediate ..."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React and React Native",
+      "authors": ["Adam Boduch"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2017-03-08",
+      "description": "Use React and React Native to build applications for desktop browsers, mobile browsers, and even as native mobile apps About This Book Build React and React Native applications using familiar component concepts Dive deep into each platform, from routing in React to creating native mobile applications that can run offline Use Facebook's Relay, React and GraphQL technologies, to create a unified architecture that powers both web and native applications Who This Book Is For This book is written for any JavaScript developer—beginner or expert—who wants to start learning how to put both of Facebook's UI libraries to work. No knowledge of React is needed, though a working knowledge of ES2015 will help you follow along better. What You Will Learn Craft reusable React components Control navigation using the React Router to help keep your UI in sync with URLs Build isomorphic web applications using Node.js Use the Flexbox layout model to create responsive mobile designs Leverage the native APIs of Android and iOS to build engaging applications with React Native Respond to gestures in a way that's intuitive for the user Use Relay to build a unified data architecture for your React UIs In Detail React and React Native allow you to build cross-platform desktop and mobile applications using Facebook's innovative UI libraries. Combined with the Flux data architecture and Relay, you can now create powerful and feature-complete applications from just one code base! This book is split into three parts. The first part shows you how to start crafting composable UIs using React, from rendering with JSX and creating reusable components through to routing and creating isomorphic applications that run on Node. We then move on to showing you how to take the concepts of React and apply them to building Native UIs using React Native. You'll find out how to build responsive and streamlined UIs that can properly handle user interactions in a mobile environment. You'll also learn how to access device-specific APIs such as the geolocation API, and how to handle offline development with React Native. Finally, we'll tie all of these skills together and shows you how you can create React applications that run on every major platform. As well as understanding application state in depth, you'll learn how to leverage Relay to make feature-complete, data-driven web and native mobile applications. Style and approach Split into three major sections to help organize your learning, this hands-on, code-first book will help you get up to speed with React and React Native—the UI framework that powers Netflix, Yahoo, and Facebook.",
+      "pageCount": 485,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=jLkrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "Use React and React Native to build applications for desktop browsers, mobile browsers, and even as native mobile apps About This Book Build React and React Native applications using familiar component concepts Dive deep into each platform, ..."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React Explained",
+      "subtitle": "Your Step-By-Step Guide to React",
+      "authors": ["Zac Gordon"],
+      "publishedDate": "2019-03-05",
+      "description": "React Explained is a fun and enjoyable introduction to React, which is the Javascript framework of choice for WordPress, Drupal, Magento, and thousands of developers. Key Features Up-to-Date: Constantly updated, the material in React Explained is always current. Clear instruction: You will follow plain English, clear visuals, and enjoyable step-by-step instructions. Hands-on learning: You will master React by building a complete React application. What You'll Learn In React Explained, readers will dig deep into how React works and will learn how to build applications with it. While the focus is on building for the frontend on the web, many of the skills you will learn will also apply to writing React on the server side, for native applications and even for Virtual Reality environments. Table of Contents The Javascript You Should Know for React Helpful Developer Tools for React A High Level Overview of React React Elements and Components Explained 5 Exercises in Writing React With Elements and Components JSX Explained 5 Exercises in Writing React With JSX Create React App Explained 5 Exercises With Create React App Props in React Explained 5 Exercises in Working With Props State in React Explained 5 Exercises in Working With State The Component Lifecycle Explained 5 Exercises With the Component Lifecycle Project Introduction Step 1 - Listing Content from State Step 2 - Routing and Single Content Views Step 3 - Adding a Content Form Step 4 - Adding Flash Messages Step 5 - Updating Content Step 6 - Deleting Content Step 7 - Maintaining Persistent State With Local Storage Step 8 - Authenticating With a Firebase Database Step 9 - CRUD and Live Syncing With Firebase Step 10 - Deploying the Project Step 11 - Refactoring Your Code About the Author Zac Gordon is a professional educator, who currently focuses on JavaScript development with and alongside WordPress at javascriptforwp.com. Zac has years of experience teaching at high schools, colleges, bootcamps and online learning sites like Treehouse, Udemy and Frontend Masters. In addition to teaching, Zac also runs Web Hosting for Students, one of the world's largest hosting companies dedicated to students and teachers. You can also catch his free Office Yoga sessions on OfficeYoga.tv.",
+      "pageCount": 304,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=NP9nwwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "&quot;React Explained is a fun and enjoyable introduction to React, which is the Javascript framework of choice for WordPress, Drupal, Magento, and thousands of developers."
+    }
+  },
+
+  {
+    "volumeInfo": {
+      "price": "200",
+      "category": "paid",
+      "title": "React Projects",
+      "subtitle": "Build 12 real-world applications from scratch using React, React Native, and React 360",
+      "authors": ["Roy Derks"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2019-12-20",
+      "description": "Build cross-platform applications of varying complexity for the web, mobile, and VR devices using React tooling Key FeaturesBuild React applications at scale using effective React patterns and best practicesExplore React features such as Hooks, the Context API, and the Suspense APIExtend React’s integration with React Native for building cross-platform mobile apps and gamesBook Description Developed by Facebook, React is a popular library for building impressive user interfaces. React extends its capabilities to the mobile platform using the React Native framework and integrates with popular web and mobile tools to build scalable applications. React Projects is your guide to learning React development by using modern development patterns and integrating React with powerful web tools such as GraphQL, Expo, and React 360. You'll start building a real-world project right from the first chapter and get hands on with developing scalable applications as you advance to building more complex projects. Throughout the book, you'll use the latest versions of React and React Native to explore features such as Higher Order Components (HOC), Context, and Hooks on multiple platforms, which will help you build full stack web and mobile applications efficiently. Finally, you'll delve into unit testing with Jest to build test-driven apps. By the end of this React book, you'll have developed the skills necessary to start building scalable React apps across web and mobile platforms. What you will learnCreate a wide range of applications using various modern React tools and frameworksDiscover how React Hooks modernize state management for React appsDevelop progressive web applications using React componentsBuild test-driven React applications using the Jest and Enzyme frameworksUnderstand full stack development using React, Apollo, and GraphQLPerform server-side rendering using React and React RouterDesign gestures and animations for a cross-platform game using React NativeWho this book is for The book is for JavaScript developers who want to explore React tooling and frameworks for building cross-platform applications. Basic knowledge of web development, ECMAScript, and React will assist with understanding key concepts covered in this book.",
+      "pageCount": 465,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=2HvGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "Basic knowledge of web development, ECMAScript, and React will assist with understanding key concepts covered in this book."
+    }
+  },
+
+  {
+    "volumeInfo": {
+      "price": "450",
+      "category": "paid",
+      "title": "React Quickly, Second Edition",
+      "authors": ["Morten Barklund", "Azat Mardan"],
+      "publisher": "Simon and Schuster",
+      "publishedDate": "2023-09-05",
+      "description": "Learn the skills you need to build React applications quickly! This fully revised second edition introduces functional components, React hooks, static site generators, and more. In React Quickly, Second Edition you will learn how to: Master React fundamentals Implement best practices and the components of good architecture Build intuitive user interfaces Create dynamic components with JSX Use lightweight functional components in React Make your app interactive with stateful components Utilize React hooks Handle events like button clicks and pass data between components Build your skills with React fast! There’s no slow theory and tedious history in React Quickly—you’ll dive into React code right from the very first chapter. As you go, you’ll explore over 80 useful and practical examples that put React into action. This new second edition has been completely rewritten to cover the latest developments in the React framework. Perfect, whether you’re a React beginner or an experienced pro looking to keep their skills up to date. Purchase of the print book includes a free eBook in PDF, Kindle, and ePub formats from Manning Publications. About the technology React makes it a breeze to build beautiful, reliable web frontends. This amazing JavaScript library has a modular architecture, so you can create, combine, and test components seamlessly. React is perfect for small prototypes, enterprise scale sites, and everything in between. About the book React Quickly, Second Edition offers a unique approach to learning the React framework. More than 80 concise examples guide you from your first steps through advanced applications. You’ll appreciate the up-to-date coverage of functional components, React hooks, and web accessibility, along with interesting projects to practice your new skill. What's inside Master React fundamentals Best practices of component-based design Create dynamic components with JSX Make your app interactive with stateful components About the reader For developers comfortable building web applications with JavaScript. About the author Morten Barklund is an expert in React, web testing, and accessibility and is the founder of Coding Heaven. Azat Mardan is a seasoned software engineer, startup mentor, and best-selling author. Table of Contents 1 Meeting React 2 Baby steps with React 3 Introduction to JSX 4 Functional Components 5 Making React interactive with states 6 Effects and the React component life cycle 7 Hooks to fuel your web applications 8 Handling events in React 9 Working with forms in React 10 Advanced React hooks for scaling 11 Project: Website menu 12 Project: Timer 13 Project: Task manager",
+      "pageCount": 454,
+      "printType": "BOOK",
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=KOXPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "The book teaches you how React thinks, introducing ways of structuring your architecture that even work with large teams. React Quickly, Second Edition is a practical guide to React for busy web developers."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React - The Road To Enterprise",
+      "subtitle": "TypeScript Edition",
+      "authors": ["Thomas Findlay"],
+      "publisher": "The Road To Enterprise",
+      "publishedDate": "2022-03-14",
+      "description": "\"React - The Road To Enterprise\" is an advanced book that revolves around best practices, advanced patterns and techniques for the development of React and Next applications in TypeScript. It's a one-stop resource for many crucial concepts that should help you solve and avoid many pain-points when developing React applications. This book covers many advanced topics to help you build maintainable, scalable and performant React applications, such as scalable project architecture, useful techniques for handling async operations and API states, advanced component patterns, performance optimisation, local and global state management patterns, static site generation (SSG) and server side rendering (SSR) with Next.js and more.",
+      "pageCount": 443,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=qOJtEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "This book covers many advanced topics to help you build maintainable, scalable and performant React applications, such as scalable project architecture, useful techniques for handling async operations and API states, advanced component ..."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "120000",
+      "category": "paid",
+      "title": "React Explained",
+      "subtitle": "Your Step-By-Step Guide to React",
+      "authors": ["Zac Gordon"],
+      "publishedDate": "2019-03-05",
+      "description": "React Explained is a fun and enjoyable introduction to React, which is the Javascript framework of choice for WordPress, Drupal, Magento, and thousands of developers. Key Features Up-to-Date: Constantly updated, the material in React Explained is always current. Clear instruction: You will follow plain English, clear visuals, and enjoyable step-by-step instructions. Hands-on learning: You will master React by building a complete React application. What You'll Learn In React Explained, readers will dig deep into how React works and will learn how to build applications with it. While the focus is on building for the frontend on the web, many of the skills you will learn will also apply to writing React on the server side, for native applications and even for Virtual Reality environments. Table of Contents The Javascript You Should Know for React Helpful Developer Tools for React A High Level Overview of React React Elements and Components Explained 5 Exercises in Writing React With Elements and Components JSX Explained 5 Exercises in Writing React With JSX Create React App Explained 5 Exercises With Create React App Props in React Explained 5 Exercises in Working With Props State in React Explained 5 Exercises in Working With State The Component Lifecycle Explained 5 Exercises With the Component Lifecycle Project Introduction Step 1 - Listing Content from State Step 2 - Routing and Single Content Views Step 3 - Adding a Content Form Step 4 - Adding Flash Messages Step 5 - Updating Content Step 6 - Deleting Content Step 7 - Maintaining Persistent State With Local Storage Step 8 - Authenticating With a Firebase Database Step 9 - CRUD and Live Syncing With Firebase Step 10 - Deploying the Project Step 11 - Refactoring Your Code About the Author Zac Gordon is a professional educator, who currently focuses on JavaScript development with and alongside WordPress at javascriptforwp.com. Zac has years of experience teaching at high schools, colleges, bootcamps and online learning sites like Treehouse, Udemy and Frontend Masters. In addition to teaching, Zac also runs Web Hosting for Students, one of the world's largest hosting companies dedicated to students and teachers. You can also catch his free Office Yoga sessions on OfficeYoga.tv.",
+      "pageCount": 304,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=NP9nwwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "&quot;React Explained is a fun and enjoyable introduction to React, which is the Javascript framework of choice for WordPress, Drupal, Magento, and thousands of developers."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "Full-Stack React, TypeScript, and Node",
+      "subtitle": "Build cloud-ready web applications using React 17 with Hooks and GraphQL",
+      "authors": ["David Choi"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2020-12-18",
+      "description": "Discover the current landscape of full-stack development and how to leverage modern web technologies for building production-ready React.js applications to deploy on AWS Key FeaturesUnderstand the architecture of React and single-page applicationsBuild a modern Web API for your SPA using Node.js, Express, and GraphQLGain a clear and practical understanding of how to build a complete full-stack applicationBook Description React sets the standard for building high-performance client-side web apps. Node.js is a scalable application server that is used in thousands of websites, while GraphQL is becoming the standard way for large websites to provide data and services to their users. Together, these technologies, when reinforced with the capabilities of TypeScript, provide a cutting-edge stack for complete web application development. This book takes a hands-on approach to implementing modern web technologies and the associated methodologies for building full-stack apps. You’ll begin by gaining a strong understanding of TypeScript and how to use it to build high-quality web apps. The chapters that follow delve into client-side development with React using the new Hooks API and Redux. Next, you’ll get to grips with server-side development with Express, including authentication with Redis-based sessions and accessing databases with TypeORM. The book will then show you how to use Apollo GraphQL to build web services for your full-stack app. Later, you’ll learn how to build GraphQL schemas and integrate them with React using Hooks. Finally, you’ll focus on how to deploy your application onto an NGINX server using the AWS cloud. By the end of this book, you’ll be able to build and deploy complete high-performance web applications using React, Node, and GraphQL. What you will learnDiscover TypeScript’s most important features and how they can be used to improve code quality and maintainabilityUnderstand what React Hooks are and how to build React apps using themImplement state management for your React app using ReduxSet up an Express project with TypeScript and GraphQL from scratchBuild a fully functional online forum app using React and GraphQLAdd authentication to your web app using RedisSave and retrieve data from a Postgres database using TypeORMConfigure NGINX on the AWS cloud to deploy and serve your appsWho this book is for The book is for web developers who want to go beyond front-end web development and enter the world of full-stack web development by learning about modern web technologies and how they come together. A good understanding of JavaScript programming is required before getting started with this web development book.",
+      "pageCount": 648,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=uUMQEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "This book takes a hands-on approach to implementing modern web technologies and the associated methodologies for building full-stack apps."
+    }
+  },
+
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React and React Native",
+      "subtitle": "A complete hands-on guide to modern web and mobile development with React.js",
+      "authors": ["Adam Boduch", "Roy Derks"],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2020-04-30",
+      "description": "Get up to speed with React, React Native, GraphQL and Apollo for building cross-platform native apps with the help of practical examples Key FeaturesCovers the latest features of React such as Hooks, Suspense, NativeBase, and Apollo in this updated third editionGet to grips with the React architecture for writing easy-to-manage web and mobile applicationsUnderstand GraphQL and Apollo for building a scalable backend for your cross-platform appsBook Description React and React Native, Facebook's innovative User Interface (UI) libraries, are designed to help you build robust cross-platform web and mobile applications. This updated third edition is improved and updated to cover the latest version of React. The book particularly focuses on the latest developments in the React ecosystem, such as modern Hook implementations, code splitting using lazy components and Suspense, user interface framework components using Material-UI, and Apollo. In terms of React Native, the book has been updated to version 0.62 and demonstrates how to apply native UI components for your existing mobile apps using NativeBase. You will begin by learning about the essential building blocks of React components. Next, you'll progress to working with higher-level functionalities in application development, before putting this knowledge to use by developing user interface components for the web and for native platforms. In the concluding chapters, you'll learn how to bring your application together with a robust data architecture. By the end of this book, you'll be able to build React applications for the web and React Native applications for multiple mobile platforms. What you will learnDelve into the React architecture, component properties, state, and contextGet to grips with React Hooks for handling functions and componentsImplement code splitting in React using lazy components and SuspenseBuild robust user interfaces for mobile and desktop apps using Material-UIWrite shared components for Android and iOS mobile apps using React NativeSimplify layout design for React Native apps using NativeBaseWrite GraphQL schemas to power web and mobile appsImplement web and mobile components that are driven by ApolloWho this book is for This book is for any JavaScript developer who wants to start learning how to use Facebook's UI libraries, React and React Native, for mobile and web application development. Although no prior knowledge of React is needed, working knowledge of JavaScript programming will help you understand the concepts covered in the book more effectively.",
+      "pageCount": 505,
+      "printType": "BOOK",
+      "categories": ["Computers"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": true,
+      "contentVersion": "1.3.3.0.preview.2",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=XCLhDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "By the end of this book, you&#39;ll be able to build React applications for the web and React Native applications for multiple mobile platforms."
+    }
+  },
+
+  {
+    "volumeInfo": {
+      "price": "700",
+      "category": "paid",
+      "title": "Learning React",
+      "subtitle": "Modern Patterns for Developing React Apps",
+      "authors": ["Alex Banks", "Eve Porcello"],
+      "publisher": "O'Reilly Media",
+      "publishedDate": "2020-06-12",
+      "description": "If you want to learn how to build efficient React applications, this is your book. Ideal for web developers and software engineers who understand how JavaScript, CSS, and HTML work in the browser, this updated edition provides best practices and patterns for writing modern React code. No prior knowledge of React or functional JavaScript is necessary. With their learning road map, authors Alex Banks and Eve Porcello show you how to create UIs that can deftly display changes without page reloads on large-scale, data-driven websites. You’ll also discover how to work with functional programming and the latest ECMAScript features. Once you learn how to build React components with this hands-on guide, you’ll understand just how useful React can be in your organization. Understand key functional programming concepts with JavaScriptLook under the hood to learn how React runs in the browserCreate application presentation layers with React componentsManage data and reduce the time you spend debugging applicationsIncorporate React Hooks to manage state and fetch dataUse a routing solution for single-page application featuresLearn how to structure React applications with servers in mind",
+      "pageCount": 310,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=tDjrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "If you want to learn how to build efficient React applications, this is your book."
+    }
+  },
+
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React: Building Modern Web Applications",
+      "authors": [
+        "Jonathan Hayward",
+        "Artemij Fedosejev",
+        "Narayan Prusty",
+        "Adam Horton",
+        "Ryan Vice",
+        "Ethan Holmes",
+        "Tom Bray"
+      ],
+      "publisher": "Packt Publishing Ltd",
+      "publishedDate": "2016-06-10",
+      "description": "Master the art of building dynamic, modern web applications with React About This Book Learn the hot new frontend web framework from Facebook – ReactJS, an easy way of developing the V in MVC and a better approach to software engineering in JavaScript A fast-paced guide to designing and building scalable and maintainable web apps with React.js Learn all the new ES6 features and be among the most prominent JavaScript developers who can write efficient JS programs as per the latest standards Master the art of building modern web applications using React Learn to build modern native iOS and Android applications using JavaScript and the incredible power of React Who This Book Is For This course is for web developers that want to unlock high performance dynamism in the applications that they create. If you want a comprehensive journey into one of the most important JavaScript frameworks around today, dive into this course. What You Will Learn Take control of the front end with reactive JavaScript programming Discover what ReactJS offers your development - before mastering it Create React elements with properties and children Use JSX to speed up your React development process Test your React components with the Jest test framework Learn the latest syntax of ES6 Execute ES6 in a non-supported ES6 environment Learn the principles of object-oriented programming Create a complete single-page application Use an application design plan to write smarter, more meaningful code Learn how to use animations to give extra style to your application Get to grips with the React Native environment Write your own custom native UI components Integrate native modules in Objective-C and Java that interact with JavaScript In Detail ReactJS has helped to transform the web as we know it. Designed by Facebook to help developers build rapid, responsive UI that can deal with data-intensive usage, it's an essential component in any web developer's skillset. This ReactJS course, in five connected modules, provides you with a fast, engaging and practical route into ReactJS—so you can build powerful, elegant, and modern web applications. Beginning with the Reactive Programming with JavaScript module, you will learn how to take advantage of a reactive and functional programming paradigm to rethink how you approach your JavaScript code. It's built to help you understand the concepts, relevant and applicable for any frontend developer. You'll then dive a little deeper into ReactJS. The second module gives you a rapid look through the fundamentals of ReactJS, showing you how to build a basic application and demonstrating how to implement the Flux architecture. In the third module you will get to grips with ES6—this will make you a more fluent JavaScript developer, giving you control over ReactJS. You can put your old JavaScript hacks aside and instead explore how to create ES6 custom iterators. In the final two modules you'll learn how to fully master ReactJS, exploring its wider ecosystem of tools that have helped to make it one of the most important tools in web development today. Ending with insights and guidance on React Native, the tool built for today's demand for native, intuitive user experiences and interfaces, with this course you can be confident in building dynamic and modern apps with React. Style and approach Consisting of five separate modules, journey from the fundamentals of reactive programming to the exciting possibilities of React Native. Each module builds on each other, helping you to incrementally develop your skills and knowledge.",
+      "pageCount": 910,
+      "categories": ["Computers"],
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=jUvZDQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "Master the art of building dynamic, modern web applications with React About This Book Learn the hot new frontend web framework from Facebook – ReactJS, an easy way of developing the V in MVC and a better approach to software engineering ..."
+    }
+  },
+  {
+    "volumeInfo": {
+      "price": "0",
+      "category": "free",
+      "title": "React JS",
+      "subtitle": "3 Books in 1 - \" From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\"",
+      "authors": ["Adrian Roberts"],
+      "publisher": "Independently Published",
+      "publishedDate": "2023-12-07",
+      "description": "\"React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\" is the ultimate guide for anyone aspiring to master the art of front-end development using React JS. Whether you're just starting out or are an intermediate developer looking to upgrade your skills, this book is designed to take you on a comprehensive journey through the world of React, culminating in professional-level mastery. Starting with the basics, this book introduces you to the fundamentals of React JS, ensuring a solid foundation upon which to build. You'll learn about JSX, components, and state management, all explained with clarity and reinforced with practical examples. The book then seamlessly transitions into more complex topics, ensuring a smooth learning curve. As you progress, you will dive deeper into the nuances of React, exploring advanced concepts such as hooks, context API, and state management with Redux. You'll learn how to handle asynchronous operations elegantly, integrate with APIs, and manage application routing and state on a larger scale. \"React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\" doesn't just teach you to code; it guides you in thinking like a React developer. You will understand not only how to do things but also why certain practices are preferred in the React ecosystem. This approach ensures that your learning is holistic and comprehensive. One of the highlights of this book is its focus on real-world application. It teaches you how to build scalable, high-performing web applications and tackles common challenges and best practices in professional development. The book covers performance optimization techniques, ensuring your applications are not only functional but also fast and responsive. By the time you reach the final chapters, you will be equipped with the skills and confidence to build complex and modern web applications. You'll have a thorough understanding of the React ecosystem, including integration with modern tools and libraries, creating an SEO-friendly SPA, and even an introduction to server-side rendering and static site generation. \"React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications\" is more than a book; it's a journey into front-end development with React JS. It's filled with expert insights, real-world scenarios, and best practices that will mold you into a proficient React developer, ready to tackle any project with confidence and creativity.",
+      "pageCount": 0,
+      "maturityRating": "NOT_MATURE",
+      "imageLinks": {
+        "thumbnail": "http://books.google.com/books/content?id=2blh0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en"
+    },
+    "searchInfo": {
+      "textSnippet": "&quot;React JS: From Beginner to Pro - Crafting Cutting-Edge Front-End Applications&quot; is the ultimate guide for anyone aspiring to master the art of front-end development using React JS. Whether you&#39;re just starting out or are an intermediate ..."
+    }
+  }
+]
