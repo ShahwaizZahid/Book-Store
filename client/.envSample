@@ -1,6 +1,0 @@
-#  Vite API URLs
-# VITE_API_URL_USER=http://localhost:4000/auth
-# VITE_API_URL=http://localhost:4000
-
-# Gmail Link for Sending Emails
-# VITE_GMAIL_LINK=https://mail.google.com/mail/?view=cm&fs=1&to=<your-email@gmail.com>
