@@ -14,6 +14,6 @@ UserAuth.post("/signup", handleUserSignup);
 
 UserAuth.post("/verify-email", handleUserVAlidation);
 UserAuth.post("/login", handleUserLogin);
-UserAuth.post("/Otp-again", handleReSendOtp);
+UserAuth.post("/otp-again", handleReSendOtp);
 UserAuth.get("/me", handleMe);
 UserAuth.post("/logout", handleLogout);

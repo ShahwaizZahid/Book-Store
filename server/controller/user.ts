@@ -9,8 +9,12 @@ import { ValidationCodeModel } from "../model/validationModel";
 import { comparePassword, hashPassword } from "../services/Auth";
 
 export async function handleUserSignup(req: Request, res: Response) {
+  console.log(req.body);
+
   try {
     const { email = "", password = "", name = "" } = req.body;
+
+    console.log(email, password, name);
 
     const exists = await User.findOne({ email });
     if (exists && !exists.verified) {
@@ -76,43 +80,79 @@ export const handleUserLogin = async (req: Request, res: Response) => {
   const { email = "", password = "" } = req.body;
 
   if (!email || typeof email !== "string" || !isValidEmail(email)) {
-    return res.status(400).json({ message: "Invalid email" });
+    return res.status(400).json({
+      success: false,
+      message: "Invalid email format",
+    });
   }
 
   if (!password || typeof password !== "string") {
-    return res.status(400).json({ message: "Invalid password" });
+    return res.status(400).json({
+      success: false,
+      message: "Password is required",
+    });
   }
 
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: "Invalid username " });
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email address",
+      });
     }
-    const compare = await comparePassword(password, user?.password);
+
+    if (!user.verified) {
+      return res.status(401).json({
+        success: false,
+        message: "Please verify your email before logging in",
+      });
+    }
+
+    const compare = await comparePassword(password, user.password);
 
     if (!compare) {
-      return res.status(401).json({ message: "Invalid  password" });
+      return res.status(401).json({
+        success: false,
+        message: "Invalid password",
+      });
     }
 
-    const token = user._id;
-    const Session = await session.create({
+    // Clear any existing sessions for this user
+    await session.deleteMany({ userId: user._id });
+
+    const token = user._id.toString();
+    const newSession = await session.create({
       userId: user._id,
       token,
     });
 
     res
       .cookie("userBook", token, {
-        secure: true,
-        sameSite: "none",
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        httpOnly: true,
         expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
       })
       .status(200)
-      .json({ message: "login successfully", user });
+      .json({
+        success: true,
+        message: "Login successful",
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          verified: user.verified,
+        },
+      });
 
-    console.log("successfully login and create session in mongodb");
+    console.log("Successfully logged in and created session");
   } catch (err) {
     console.error("Error while logging in: ", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({
+      success: false,
+      message: "Server error during login",
+    });
   }
 };
 
@@ -182,26 +222,43 @@ export const handleReSendOtp = async (req: Request, res: Response) => {
 
 export const handleMe = async (req: Request, res: Response) => {
   try {
-    const user = req.cookies.userBook;
+    const userToken = req.cookies.userBook;
 
-    if (!user) {
-      res.status(401).json({ user: null });
-      return;
+    if (!userToken) {
+      return res.status(401).json({
+        success: false,
+        user: null,
+        message: "No authentication token found",
+      });
     }
 
-    const foundSession = await session.findOne({ token: user });
+    const foundSession = await session
+      .findOne({ token: userToken })
+      .populate("userId", "name email verified");
 
     if (!foundSession) {
-      res.status(401).json({ user: null });
-      return;
+      return res.status(401).json({
+        success: false,
+        user: null,
+        message: "Invalid or expired session",
+      });
     }
-    res.status(200).json({ user: foundSession });
-    console.log("successfully direct login");
+
+    return res.status(200).json({
+      success: true,
+      user: {
+        token: foundSession.token,
+        userId: foundSession.userId,
+        sessionId: foundSession._id,
+      },
+    });
   } catch (e) {
     console.error("Error in handleMe:", e);
-    if (!res.headersSent) {
-      res.status(500).json({ error: "Internal Server Error" });
-    }
+    return res.status(500).json({
+      success: false,
+      error: "Internal Server Error",
+      message: "Failed to authenticate user",
+    });
   }
 };
 

@@ -22,6 +22,8 @@ app.use(
 
 const MONGO: string = process.env.MONGO ?? "String Not defined";
 
+console.log(MONGO);
+
 connectToMongo(MONGO)
   .then(() => {
     console.log("Mongo DB successfully connected !");
