@@ -2,178 +2,180 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
-import { OTPFormData } from "../../hooks/DataTypes";
 import toast from "react-hot-toast";
 import { API_URL } from "../../config";
+import { OTPFormData } from "../../hooks/DataTypes";
 
 const OtpInput = () => {
-  const [enable, setEnable] = useState(true);
-  const { state } = useLocation();
-  const OTPVerifyMutation = useOTPVerifyMutation();
-  const OtpAgainMutation = useOAgainOtpMutation();
-
-  const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
+  const [enableResend, setEnableResend] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  const handleChange = (element: any, index: any) => {
-    if (isNaN(element.value)) return;
-    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
+  const { state } = useLocation();
 
-    if (element.value !== "" && index < 5) {
-      const nextInput = inputRefs.current[index + 1];
-      nextInput?.focus();
+  const OTPVerifyMutation = useOTPVerifyMutation();
+  const OtpAgainMutation = useResendOTPMutation();
+
+  const email = (state as { email: string })?.email || "";
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const value = e.target.value;
+    if (!/^\d*$/.test(value)) return;
+
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    if (value && index < 5) {
+      inputRefs.current[index + 1]?.focus();
     }
   };
 
-  const handleKeyDown = (event: any, index: any) => {
-    if (event.key === "Backspace" && index > 0 && otp[index] === "") {
-      const nextInput = inputRefs.current[index - 1];
-      nextInput?.focus();
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
     }
+  };
+
+  const resetOtp = () => {
+    setOtp(Array(6).fill(""));
+    inputRefs.current[0]?.focus();
+  };
+
+  const submitOtp = async () => {
+    const joinedOtp = otp.join("");
+    if (joinedOtp.length === 6) {
+      await OTPVerifyMutation.mutateAsync({ email, otp: joinedOtp });
+      resetOtp();
+    }
+  };
+
+  const handleResend = async () => {
+    await OtpAgainMutation.mutateAsync({ email, otp: "000000" }); // Dummy OTP, not used by server
+    setEnableResend(false);
   };
 
   useEffect(() => {
-    if (OtpAgainMutation.isSuccess) {
-      setEnable(true);
-    }
+    const timer = setTimeout(() => setEnableResend(true), 60000);
+    return () => clearTimeout(timer);
   }, [OtpAgainMutation.isSuccess]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setEnable(false);
-    }, 60000);
-  }, [enable]);
-
-  useEffect(() => {
-    if (otp.join("").length === 6) {
-      const joinOtp = otp.join("");
-      sendOtpToServer({ otp: joinOtp });
-      setOtp(["", "", "", "", "", ""]);
-      const nextInput = inputRefs.current[0];
-      nextInput?.focus();
+    if (otp.every((val) => val.length === 1)) {
+      submitOtp();
     }
   }, [otp]);
 
-  const sendOtpToServer = async (data: any) => {
-    const newData = { ...data, email: state.email };
-    await OTPVerifyMutation.mutateAsync(newData);
-  };
-
-  const sendEmailToserver = async () => {
-    const demo = { otp: "123345" };
-    const newData = { ...demo, email: state.email };
-    await OtpAgainMutation.mutateAsync(newData);
-  };
-
   return (
-    <>
-      <div className="dark:bg-slate-900 dark:text-white min-h-screen ">
-        <div className="flex flex-col justify-center items-center ">
-          <h1 className="my-8 text-center font-bold text-5xl mt-36">
-            OTP Verification
-          </h1>
-          <p className="my-4 font-semibold md:w-[60%] w-[80%]">
-            Please enter the one-time password sent to your email:{" "}
-            <span className="text-pink-500">{state.email}</span>
-          </p>
-          <div className="flex justify-center items-center ">
-            <div className="space-x-2">
-              {otp.map((data, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  maxLength={1}
-                  className="w-12 h-12 text-center dark:text-black dark:border-2 border border-gray-400 rounded-md mt-8 my-2"
-                  value={data}
-                  onChange={(e) => handleChange(e.target, index)}
-                  onKeyDown={(e) => handleKeyDown(e, index)}
-                  ref={(el) => (inputRefs.current[index] = el)}
-                />
-              ))}
-              <br />
-              <button
-                disabled={enable}
-                onClick={sendEmailToserver}
-                className={`${
-                  enable ? "text-gray-300" : "text-blue-500"
-                } hover:text-pink-500 hover:scale-105 cursor-pointer text-sm`}
-              >
-                Again send code
-              </button>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-slate-800 shadow-2xl rounded-2xl p-8 border border-gray-200 dark:border-slate-700">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Verify Your Email
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400">
+              We've sent a 6-digit verification code to:
+            </p>
+            <p className="text-blue-600 dark:text-blue-400 font-semibold">
+              {email}
+            </p>
+          </div>
+
+          <div className="flex justify-center mb-6">
+            {otp.map((digit, index) => (
+              <input
+                key={index}
+                ref={(el) => (inputRefs.current[index] = el)}
+                type="text"
+                inputMode="numeric"
+                maxLength={1}
+                value={digit}
+                onChange={(e) => handleChange(e, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                className="w-12 h-12 text-center mx-1 text-lg text-gray-900 dark:text-white border border-gray-400 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 focus:ring-2 ring-blue-500 outline-none"
+              />
+            ))}
+          </div>
+
+          <div className="text-center">
+            <button
+              disabled={!enableResend || OtpAgainMutation.isPending}
+              onClick={handleResend}
+              className={`text-sm font-medium transition-colors ${
+                enableResend
+                  ? "text-blue-600 hover:text-pink-500"
+                  : "text-gray-400 cursor-not-allowed"
+              }`}
+            >
+              {OtpAgainMutation.isPending ? "Sending..." : "Resend Code"}
+            </button>
           </div>
         </div>
 
-        <div className="items-center text-center flex justify-center my-28">
-          <p className="md:w-[60%] w-[80%] ">
-            Upon initiating account verification, a 6-digit verification code is
-            automatically generated and sent to the contact information
-            associated with your{" "}
-            <span className="text-pink-500 font-bold">
-              Email: {state.email}
-            </span>{" "}
-            . Please enter this code in the provided field below to complete the
-            verification process. This step ensures the security and integrity
-            of your account information.
-          </p>
+        <div className="text-center mt-12 text-sm text-gray-700 dark:text-gray-300 px-6">
+          A 6-digit OTP has been sent to your{" "}
+          <span className="text-pink-500 font-semibold">email</span>. Enter it
+          above to verify your account and continue.
         </div>
       </div>
-    </>
+    </div>
   );
-};
-
-type Data = {
-  email: any;
 };
 
 export default OtpInput;
 
+// Types
+interface VerifyOTPData {
+  email: string;
+  otp: string;
+}
+
+// Mutation for verifying OTP
 function useOTPVerifyMutation() {
   const navigate = useNavigate();
 
-  return useMutation<any, AxiosError, Data>({
-    mutationKey: ["otp"],
+  return useMutation<unknown, AxiosError<{ message?: string }>, VerifyOTPData>({
+    mutationKey: ["verify-otp"],
     mutationFn: async (data) => {
-      return (await axios.post(`${API_URL}/verify-email`, data)).data;
+      const response = await axios.post(`${API_URL}/verify-email`, data);
+      return response.data;
     },
     onSuccess: (_, { email }) => {
       toast.success("OTP verified successfully!");
       navigate("/login", {
         replace: true,
-        state: {
-          email,
-        },
+        state: { email },
       });
     },
     onError: (error) => {
-      console.error("OTP verification failed: ", error);
-
-      const errorMessage =
-        (error.response?.data as { message?: string })?.message ||
-        "An error occurred during OTP verification";
-
-      toast.error(errorMessage);
+      const errorMsg =
+        error.response?.data?.message || "OTP verification failed.";
+      toast.error(errorMsg);
     },
   });
 }
 
-function useOAgainOtpMutation() {
-  return useMutation<any, AxiosError, OTPFormData>({
-    mutationKey: ["otp"],
+// Mutation for resending OTP
+function useResendOTPMutation() {
+  return useMutation<unknown, AxiosError<{ message?: string }>, OTPFormData>({
+    mutationKey: ["resend-otp"],
     mutationFn: async (data) => {
-      return (await axios.post(`${API_URL}/otp-again`, data)).data;
+      const response = await axios.post(`${API_URL}/otp-again`, data);
+      return response.data;
     },
     onSuccess: () => {
       toast.success("OTP sent again successfully!");
     },
     onError: (error) => {
-      console.error("Sending OTP again failed: ", error);
-
-      const errorMessage =
-        (error.response?.data as { message?: string })?.message ||
-        "An error occurred while sending OTP again";
-
-      toast.error(errorMessage);
+      const errorMsg = error.response?.data?.message || "Failed to resend OTP.";
+      toast.error(errorMsg);
     },
   });
 }
