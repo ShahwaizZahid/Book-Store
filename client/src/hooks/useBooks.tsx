@@ -1,24 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { API_URL_book } from "../config";
+import { BookInfo, UseBookReturn } from "./DataTypes";
 
-export const useBook = () => {
-  const fetchBooks = async () => {
+export const useBook = (): UseBookReturn => {
+  const fetchBooks = async (): Promise<BookInfo[]> => {
     try {
-      console.log(API_URL_book);
       const response = await axios.get(`${API_URL_book}/book`, {
         withCredentials: true,
       });
-      return response.data;
+      return response.data || [];
     } catch (error) {
       console.error("Error fetching books:", error);
-      return error;
+      throw error;
     }
   };
 
-  const { data, error, isLoading } = useQuery({
+  const {
+    data = [],
+    error,
+    isLoading,
+  } = useQuery<BookInfo[], AxiosError>({
     queryKey: ["books"],
     queryFn: fetchBooks,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: 2,
   });
 
   return {

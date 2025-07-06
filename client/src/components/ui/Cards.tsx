@@ -1,4 +1,6 @@
-export default function Cards({ item }: any) {
+import { CardProps } from "../../hooks/DataTypes";
+
+export default function Cards({ item }: CardProps) {
   return (
     <div className="mt-4 my-3 p-3 w-80 h-[500px]">
       <div className="card bg-base-100 w-full h-full shadow-xl transform hover:scale-105 duration-200 transition-transform dark:border dark:bg-slate-900 dark:text-white">

@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
-import { SignupFormData } from "../../hooks/DataTypes";
+import { SignupFormData, AuthResponse } from "../../hooks/DataTypes";
 import toast from "react-hot-toast";
 import { API_URL } from "../../config";
 
@@ -16,178 +16,178 @@ export default function SignUp() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<SignupFormData>();
 
-  const onSubmit = async (data: any) => {
-    await signupMutation.mutateAsync(data);
-    console.log("measss", signupMutation?.data?.message);
+  const onSubmit = async (data: SignupFormData) => {
+    try {
+      await signupMutation.mutateAsync(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+    setShowPassword((prev) => !prev);
   };
 
   return (
-    <>
-      <div className="flex h-screen items-center mx-2 justify-center">
-        <div className="w-[600px] shadow-lg border-[2px] p-5 rounded-lg">
-          <div className="model-box dark:bg-slate-900 dark:text-white dark:border-white">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex justify-between">
-                <h3 className="font-bold text-lg">Signup</h3>
-                <Link to="/" className="btn btn-sm btn-circle btn-ghost">
-                  ✕
-                </Link>
-              </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-slate-800 shadow-2xl rounded-2xl p-8 border border-gray-200 dark:border-slate-700">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Create Account
+              </h3>
+              <Link
+                to="/"
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </Link>
+            </div>
 
-              {/* Name */}
-              <div className="mt-4 space-y-2">
-                <label htmlFor="name">Name:</label>
-                <br />
+            {/* Full Name */}
+            <div className="space-y-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all"
+                {...register("name", { required: "Name is required" })}
+              />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.name.message}
+                </p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div className="space-y-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email address"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: "Invalid email address",
+                  },
+                })}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+
+            {/* Password */}
+            <div className="space-y-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                Password
+              </label>
+              <div className="w-full flex bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-md overflow-hidden">
                 <input
-                  type="text"
-                  {...register("name", { required: true })}
-                  id="name"
-                  placeholder="Enter your name"
-                  className="w-80 dark:bg-slate-900 dark:text-white px-3 border py-1 rounded-md outline-none"
-                />
-                <br />
-
-                {errors.name && (
-                  <span className="text-red-500">Name is required</span>
-                )}
-              </div>
-
-              {/* Email */}
-              <div className="mt-4 space-y-2">
-                <label htmlFor="email">Email:</label>
-                <br />
-                <input
-                  type="email"
-                  {...register("email", {
-                    required: "Email is required",
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Enter your password"
+                  className="w-[80%] px-4 py-3 dark:bg-slate-700 dark:text-white outline-none"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be at least 8 characters long",
+                    },
                     pattern: {
                       value:
-                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                      message: "Invalid email address",
+                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+                      message:
+                        "Password must include uppercase, lowercase, number, and special character",
                     },
                   })}
-                  id="email"
-                  placeholder="Enter your email"
-                  className="w-80 px-3 border dark:bg-slate-900 dark:text-white py-1 rounded-md outline-none"
                 />
-                <br />
-                {errors.email && (
-                  <span className="text-red-500">
-                    {typeof errors.email.message === "string"
-                      ? errors.email.message
-                      : "Invalid email"}
-                  </span>
-                )}
-              </div>
-
-              {/* Password */}
-              <div className="mt-4 space-y-2">
-                <label htmlFor="password">Password:</label>
-                <br />
-                <div className="w-80 flex bg-white border rounded-md  overflow-hidden ">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    {...register("password", {
-                      required: "Password is required",
-                      minLength: {
-                        value: 8,
-                        message: "Password must be at least 8 characters long",
-                      },
-                      pattern: {
-                        value:
-                          /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-                        message:
-                          "Password must contain uppercase, lowercase, number, and special character",
-                      },
-                    })}
-                    id="password"
-                    placeholder="Enter your password"
-                    className="w-[80%] dark:bg-slate-900 dark:text-white px-3 py-1 outline-none "
-                  />
-                  <br />
-                  <button
-                    type="button"
-                    onClick={togglePasswordVisibility}
-                    className=" dark:bg-slate-900 dark:text-white w-[20%]"
-                  >
-                    {showPassword ? "Hide" : "Show"}
-                  </button>
-                </div>
-                <br />
-                {errors.password && (
-                  <span className="text-red-500">
-                    {typeof errors.password.message === "string"
-                      ? errors.password.message
-                      : "Invalid password"}
-                  </span>
-                )}
-              </div>
-
-              {/* Button */}
-              <div className="flex justify-around mt-4">
                 <button
-                  disabled={
-                    signupMutation.isPending || signupMutation.isSuccess
-                  }
-                  type="submit"
-                  className="bg-pink-500 text-white px-3 py-1 hover:bg-pink-700 rounded-md"
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="w-[20%] text-sm text-gray-600 dark:text-white bg-gray-100 dark:bg-slate-700"
                 >
-                  {!signupMutation.isPending ? (
-                    "Signup"
-                  ) : (
-                    <span className="loading loading-infinity loading-md"></span>
-                  )}
+                  {showPassword ? "Hide" : "Show"}
                 </button>
-
-                {/* If have account */}
-                <div>
-                  Have account?{" "}
-                  <span className="cursor-pointer underline underline-offset-4 text-blue-500">
-                    <Link to="/login" className="underline underline-offset-4">
-                      Login
-                    </Link>
-                  </span>
-                </div>
               </div>
-              {(signupMutation.isSuccess || signupMutation.isError) && (
-                <div
-                  className={` my-2  ${
-                    signupMutation?.data?.message
-                      ? "text-blue-600"
-                      : "text-red-600"
-                  }`}
-                >
-                  {signupMutation?.data?.message}
-                  {(signupMutation?.error?.response?.data as any)?.message}
-                </div>
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message}
+                </p>
               )}
-            </form>
-          </div>
+            </div>
+
+            {/* Submit Button */}
+            <div>
+              <button
+                type="submit"
+                disabled={signupMutation.isPending || signupMutation.isSuccess}
+                className="w-full py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition-all duration-200"
+              >
+                {signupMutation.isPending ? (
+                  <span className="loading loading-infinity loading-md"></span>
+                ) : (
+                  "Create Account"
+                )}
+              </button>
+            </div>
+            <p>
+              Already have an account?{" "}
+              <span className="cursor-pointer underline underline-offset-4 text-blue-500">
+                <Link to="/login">Login</Link>
+              </span>
+            </p>
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
 function useSignup() {
   const navigate = useNavigate();
 
-  return useMutation<any, AxiosError, SignupFormData>({
+  return useMutation<AuthResponse, AxiosError, SignupFormData>({
     mutationKey: ["signup"],
     mutationFn: async ({ email, password, name }) => {
       const res = await axios.post(
         `${API_URL}/signup`,
-        {
-          email,
-          password,
-          name,
-        },
+        { email, password, name },
         { withCredentials: true }
       );
       return res.data;
@@ -196,19 +196,13 @@ function useSignup() {
       toast.success("Signup successful!");
       navigate("/otp", {
         replace: true,
-        state: {
-          email,
-        },
+        state: { email },
       });
     },
     onError: (error) => {
-      console.error("Signup failed: ", error);
-
-      // Type assertion for error response
       const errorMessage =
         (error.response?.data as { message?: string })?.message ||
         "An error occurred during signup";
-
       toast.error(errorMessage);
     },
   });
